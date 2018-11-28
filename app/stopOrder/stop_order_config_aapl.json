@@ -1,0 +1,12 @@
+{
+  "stockCode":"US.AAPL181130P205000",
+  "stockOwnerCode":"US.AAPL",
+  "volume":"40",
+  "allowedDrawbackPct":"1",
+  "beforeCloseTime":"-300",
+  "incPct":"3",
+  "keepPositionPct":"20",
+  "crossDirection": "低点上穿",
+  "tradeDirection": "卖",
+  "forceQryOrderBook": "Yes"
+}

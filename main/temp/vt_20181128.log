@@ -1,0 +1,188 @@
+2018-11-28 00:10:46,414  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:10:46,422  INFO: Connected : conn_id=1; 
+2018-11-28 00:10:46,427  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 11491336298830778576, 'conn_key': 'D6505CE67A6E79A5', 'keep_alive_interval': 10};
+2018-11-28 00:10:46,437  INFO: FUTU	行情接口连接成功
+2018-11-28 00:10:46,436  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:10:46,447  INFO: Connected : conn_id=2; 
+2018-11-28 00:10:46,451  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 898872174279043577, 'conn_key': 'F9A962E67A7079B4', 'keep_alive_interval': 10};
+2018-11-28 00:10:46,468  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:10:46,486  INFO: Connected : conn_id=3; 
+2018-11-28 00:10:46,491  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 7312000242678349460, 'conn_key': '90BE69E67A72792A', 'keep_alive_interval': 10};
+2018-11-28 00:10:46,505  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:10:46,512  INFO: Connected : conn_id=4; 
+2018-11-28 00:10:46,516  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 9906075827067586745, 'conn_key': 'B38872E67A747982', 'keep_alive_interval': 10};
+2018-11-28 00:10:46,535  INFO: FUTU	交易接口解锁成功
+2018-11-28 00:10:46,536  INFO: FUTU	交易接口连接成功
+2018-11-28 00:10:48,788  INFO: FUTU	委托查询成功
+2018-11-28 00:10:55,081  INFO: STOPORDER_MAIN_WINDOW	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:11:01,016  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:11:08,783  INFO: STOP_ORDER_ENGINE	策略[卖US.AAPL181130P205000+US.AAPL]不存在
+2018-11-28 00:11:16,444  INFO: STOP_ORDER_ENGINE	策略[卖US.AAPL181130P205000+US.AAPL]不存在
+2018-11-28 00:32:45,095  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:32:45,104  INFO: Connected : conn_id=1; 
+2018-11-28 00:32:45,111  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 8825214136618921922, 'conn_key': 'C82FEDCF7F767978', 'keep_alive_interval': 10};
+2018-11-28 00:32:45,118  INFO: FUTU	行情接口连接成功
+2018-11-28 00:32:45,118  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:32:45,127  INFO: Connected : conn_id=2; 
+2018-11-28 00:32:45,131  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 7167891672770218965, 'conn_key': 'D10BF3CF7F787926', 'keep_alive_interval': 10};
+2018-11-28 00:32:45,148  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:32:45,156  INFO: Connected : conn_id=3; 
+2018-11-28 00:32:45,161  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 15742747562307362933, 'conn_key': '7420FACF7F7A796D', 'keep_alive_interval': 10};
+2018-11-28 00:32:45,179  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:32:45,195  INFO: Connected : conn_id=4; 
+2018-11-28 00:32:45,200  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 7095838476779714196, 'conn_key': '94F600D07F7C7996', 'keep_alive_interval': 10};
+2018-11-28 00:32:45,217  INFO: FUTU	交易接口解锁成功
+2018-11-28 00:32:45,219  INFO: FUTU	交易接口连接成功
+2018-11-28 00:32:47,470  INFO: FUTU	委托查询成功
+2018-11-28 00:32:49,144  INFO: STOPORDER_MAIN_WINDOW	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:32:55,351  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:47:39,025  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:47:39,039  INFO: Connected : conn_id=1; 
+2018-11-28 00:47:39,046  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 3781191364359630681, 'conn_key': '502F6E24837E7939', 'keep_alive_interval': 10};
+2018-11-28 00:47:39,048  INFO: FUTU	行情接口连接成功
+2018-11-28 00:47:39,047  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:47:39,055  INFO: Connected : conn_id=2; 
+2018-11-28 00:47:39,059  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 4573827097800349543, 'conn_key': '671772248380795E', 'keep_alive_interval': 10};
+2018-11-28 00:47:39,070  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:47:39,075  INFO: Connected : conn_id=3; 
+2018-11-28 00:47:39,079  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 7888478622568626160, 'conn_key': 'F8377724838279E3', 'keep_alive_interval': 10};
+2018-11-28 00:47:39,087  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:47:39,092  INFO: Connected : conn_id=4; 
+2018-11-28 00:47:39,098  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 2916506832975126149, 'conn_key': '805E7B248384791E', 'keep_alive_interval': 10};
+2018-11-28 00:47:39,123  INFO: FUTU	交易接口解锁成功
+2018-11-28 00:47:39,124  INFO: FUTU	交易接口连接成功
+2018-11-28 00:47:41,351  INFO: FUTU	委托查询成功
+2018-11-28 00:48:00,127  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:49:07,752  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:49:07,758  INFO: Connected : conn_id=1; 
+2018-11-28 00:49:07,764  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 2123875498999783543, 'conn_key': '79A00979838679C2', 'keep_alive_interval': 10};
+2018-11-28 00:49:07,773  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:49:07,774  INFO: FUTU	行情接口连接成功
+2018-11-28 00:49:07,777  INFO: Connected : conn_id=2; 
+2018-11-28 00:49:07,782  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 4573835895312924949, 'conn_key': '14C10E7983887907', 'keep_alive_interval': 10};
+2018-11-28 00:49:07,792  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:49:07,799  INFO: Connected : conn_id=3; 
+2018-11-28 00:49:07,804  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 1115073580515959586, 'conn_key': '21A31379838A7905', 'keep_alive_interval': 10};
+2018-11-28 00:49:07,820  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:49:07,827  INFO: Connected : conn_id=4; 
+2018-11-28 00:49:07,832  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 1979766907994814386, 'conn_key': 'B3B71A79838C7961', 'keep_alive_interval': 10};
+2018-11-28 00:49:07,845  INFO: FUTU	交易接口解锁成功
+2018-11-28 00:49:07,848  INFO: FUTU	交易接口连接成功
+2018-11-28 00:49:10,070  INFO: FUTU	委托查询成功
+2018-11-28 00:56:52,375  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:56:52,383  INFO: Connected : conn_id=1; 
+2018-11-28 00:56:52,394  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 14229560100898516193, 'conn_key': 'E2AC2034858E792C', 'keep_alive_interval': 10};
+2018-11-28 00:56:52,398  INFO: FUTU	行情接口连接成功
+2018-11-28 00:56:52,396  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:56:52,404  INFO: Connected : conn_id=2; 
+2018-11-28 00:56:52,408  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 5078247857105275894, 'conn_key': 'F00B263485907908', 'keep_alive_interval': 10};
+2018-11-28 00:56:52,417  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:56:52,424  INFO: Connected : conn_id=3; 
+2018-11-28 00:56:52,430  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 17544213824690384384, 'conn_key': '04EE2A348592798D', 'keep_alive_interval': 10};
+2018-11-28 00:56:52,444  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 00:56:52,450  INFO: Connected : conn_id=4; 
+2018-11-28 00:56:52,457  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 13725163539703891360, 'conn_key': 'A3853134859479EB', 'keep_alive_interval': 10};
+2018-11-28 00:56:52,483  INFO: FUTU	交易接口解锁成功
+2018-11-28 00:56:52,483  INFO: FUTU	交易接口连接成功
+2018-11-28 00:56:54,717  INFO: FUTU	委托查询成功
+2018-11-28 00:57:01,479  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:57:24,047  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:57:48,973  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:58:21,636  INFO: STOPORDER_MAIN_WINDOW	策略[卖US.AAPL181130P205000+US.AAPL]已经存在，不能重复启动
+2018-11-28 00:58:24,661  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:58:29,083  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:58:30,583  INFO: FUTU	摆盘查询成功US.AAPL181130P205000
+2018-11-28 00:58:30,583  INFO: STOP_ORDER_ENGINE	请求US.AAPL181130P205000摆盘信息
+2018-11-28 00:58:30,584  INFO: FUTU	下单 price=30.85 volume=40 symbol=US.AAPL181130P205000 side=SELL type=NORMAL adjust=-0.01
+2018-11-28 00:58:30,584  INFO: FUTU	委托失败：不是可交易的证券类型
+2018-11-28 00:58:30,585  INFO: STOP_ORDER_ENGINE	策略卖US.AAPL181130P205000+US.AAPL发送委托失败，US.AAPL181130P205000，空，40@30.85
+2018-11-28 00:58:46,190  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 00:58:47,838  INFO: FUTU	摆盘查询成功US.AAPL181130P205000
+2018-11-28 00:58:47,838  INFO: STOP_ORDER_ENGINE	请求US.AAPL181130P205000摆盘信息
+2018-11-28 00:58:47,838  INFO: FUTU	下单 price=30.85 volume=40 symbol=US.AAPL181130P205000 side=SELL type=NORMAL adjust=-0.01
+2018-11-28 00:58:47,839  INFO: FUTU	委托失败：不是可交易的证券类型
+2018-11-28 00:58:47,839  INFO: STOP_ORDER_ENGINE	策略卖US.AAPL181130P205000+US.AAPL发送委托失败，US.AAPL181130P205000，空，40@30.85
+2018-11-28 01:01:21,299  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:03:19,664  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:03:23,203  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:03:41,200  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:03:43,112  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:04:12,697  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:04:16,289  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:05:27,911  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P255000+US.AAPL]
+2018-11-28 01:05:36,730  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P255000+US.AAPL]
+2018-11-28 01:05:38,644  INFO: FUTU	摆盘查询成功US.AAPL181130P205000
+2018-11-28 01:05:38,644  INFO: STOP_ORDER_ENGINE	请求US.AAPL181130P205000摆盘信息
+2018-11-28 01:05:38,646  INFO: FUTU	下单 price=31.05 volume=40 symbol=US.AAPL181130P205000 side=SELL type=NORMAL adjust=-0.01
+2018-11-28 01:05:38,646  INFO: FUTU	委托失败：不是可交易的证券类型
+2018-11-28 01:05:38,647  INFO: STOP_ORDER_ENGINE	策略卖US.AAPL181130P205000+US.AAPL发送委托失败，US.AAPL181130P205000，空，40@31.05
+2018-11-28 01:05:44,220  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P255000+US.AAPL]
+2018-11-28 01:05:52,683  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:08:06,996  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:08:07,006  INFO: Connected : conn_id=1; 
+2018-11-28 01:08:07,012  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 18408912660519979376, 'conn_key': '77097CB7879979D0', 'keep_alive_interval': 10};
+2018-11-28 01:08:07,019  INFO: FUTU	行情接口连接成功
+2018-11-28 01:08:07,017  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:08:07,023  INFO: Connected : conn_id=2; 
+2018-11-28 01:08:07,031  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 8464966882309483776, 'conn_key': '04AD80B7879B798C', 'keep_alive_interval': 10};
+2018-11-28 01:08:07,040  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:08:07,047  INFO: Connected : conn_id=3; 
+2018-11-28 01:08:07,052  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 9762005774015810212, 'conn_key': 'A54A86B7879D7973', 'keep_alive_interval': 10};
+2018-11-28 01:08:07,062  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:08:07,078  INFO: Connected : conn_id=4; 
+2018-11-28 01:08:07,085  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 15022212337808157108, 'conn_key': 'B2A98BB7879F7982', 'keep_alive_interval': 10};
+2018-11-28 01:08:07,102  INFO: FUTU	交易接口解锁成功
+2018-11-28 01:08:07,103  INFO: FUTU	交易接口连接成功
+2018-11-28 01:08:09,335  INFO: FUTU	委托查询成功
+2018-11-28 01:08:16,296  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:08:22,022  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:08:33,092  INFO: STOP_ORDER_ENGINE	重启策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:08:33,203  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:08:45,744  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P215000+US.AAPL]
+2018-11-28 01:08:57,204  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P215000+US.AAPL]
+2018-11-28 01:09:12,319  INFO: STOP_ORDER_ENGINE	重启策略[卖US.AAPL181130P215000+US.AAPL]
+2018-11-28 01:09:12,336  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P215000+US.AAPL]
+2018-11-28 01:09:28,287  INFO: STOP_ORDER_ENGINE	取消策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:10:36,476  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:10:36,483  INFO: Connected : conn_id=1; 
+2018-11-28 01:10:36,494  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 15814848073639204694, 'conn_key': '5317094688A17946', 'keep_alive_interval': 10};
+2018-11-28 01:10:36,500  INFO: FUTU	行情接口连接成功
+2018-11-28 01:10:36,499  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:10:36,506  INFO: Connected : conn_id=2; 
+2018-11-28 01:10:36,513  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 3132713721987511524, 'conn_key': 'E4B40E4688A379FA', 'keep_alive_interval': 10};
+2018-11-28 01:10:36,534  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:10:36,539  INFO: Connected : conn_id=3; 
+2018-11-28 01:10:36,544  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 9185553820197225730, 'conn_key': '0785164688A579F0', 'keep_alive_interval': 10};
+2018-11-28 01:10:36,555  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:10:36,561  INFO: Connected : conn_id=4; 
+2018-11-28 01:10:36,567  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 6087079475589948054, 'conn_key': '97221C4688A77932', 'keep_alive_interval': 10};
+2018-11-28 01:10:36,591  INFO: FUTU	交易接口解锁成功
+2018-11-28 01:10:36,592  INFO: FUTU	交易接口连接成功
+2018-11-28 01:10:38,823  INFO: FUTU	委托查询成功
+2018-11-28 01:10:52,430  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:11:40,483  INFO: FUTU	摆盘查询成功US.AAPL181130P205000
+2018-11-28 01:11:40,484  INFO: STOP_ORDER_ENGINE	请求US.AAPL181130P205000摆盘信息
+2018-11-28 01:11:40,486  INFO: FUTU	下单 price=31.1 volume=40 symbol=US.AAPL181130P205000 side=SELL type=NORMAL adjust=-0.01
+2018-11-28 01:11:40,486  INFO: FUTU	委托失败：不是可交易的证券类型
+2018-11-28 01:11:40,487  INFO: STOP_ORDER_ENGINE	策略卖US.AAPL181130P205000+US.AAPL发送委托失败，US.AAPL181130P205000，空，40@31.1
+2018-11-28 01:16:36,827  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:16:36,841  INFO: Connected : conn_id=1; 
+2018-11-28 01:16:36,848  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 12284035867150979573, 'conn_key': 'F711B19D89AA7968', 'keep_alive_interval': 10};
+2018-11-28 01:16:36,851  INFO: FUTU	行情接口连接成功
+2018-11-28 01:16:36,849  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:16:36,855  INFO: Connected : conn_id=2; 
+2018-11-28 01:16:36,860  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 826880614143917320, 'conn_key': '097DB49D89AC79FC', 'keep_alive_interval': 10};
+2018-11-28 01:16:36,868  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:16:36,875  INFO: Connected : conn_id=3; 
+2018-11-28 01:16:36,881  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 14589883274411728662, 'conn_key': '175FB99D89AE797D', 'keep_alive_interval': 10};
+2018-11-28 01:16:36,895  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-28 01:16:36,912  INFO: Connected : conn_id=4; 
+2018-11-28 01:16:36,918  INFO: InitConnect ok: conn_id=4; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 9906141860970100404, 'conn_key': 'B7F6BF9D89B07941', 'keep_alive_interval': 10};
+2018-11-28 01:16:37,088  INFO: FUTU	交易接口解锁成功
+2018-11-28 01:16:37,089  INFO: FUTU	交易接口连接成功
+2018-11-28 01:16:39,319  INFO: FUTU	委托查询成功
+2018-11-28 01:16:49,759  INFO: STOP_ORDER_ENGINE	成功添加策略[卖US.AAPL181130P205000+US.AAPL]
+2018-11-28 01:16:52,108  INFO: FUTU	摆盘查询成功US.AAPL181130P205000, {'code': 'US.AAPL181130P205000', 'Bid': [(31.45, 82, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0)], 'Ask': [(31.7, 31, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0), (0.0, 0, 0)]}
+2018-11-28 01:16:52,108  INFO: FUTU	下单 price=31.45 volume=40 symbol=US.AAPL181130P205000 side=SELL type=NORMAL adjust=-0.01
+2018-11-28 01:16:52,110  INFO: FUTU	委托失败：不是可交易的证券类型
+2018-11-28 01:16:52,111  INFO: STOP_ORDER_ENGINE	策略卖US.AAPL181130P205000+US.AAPL发送委托失败，US.AAPL181130P205000，空，40@31.45

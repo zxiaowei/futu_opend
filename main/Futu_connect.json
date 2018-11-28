@@ -1,0 +1,7 @@
+{
+	"host": "10.0.0.2",
+	"port": 22221,
+	"market": "US,HK,SZ,SH",
+    "password": "887886",
+    "env": "SIMULATE"
+}

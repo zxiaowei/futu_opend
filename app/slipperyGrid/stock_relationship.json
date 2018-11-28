@@ -1,0 +1,5 @@
+{
+  "US..IXIC":{"positive":"US.TQQQ", "negative": "US.SQQQ"},
+  "HK.00700":{"positive":"HK.19467", "negative": "HK.20176"},
+  "US.BABA" :{"positive":"US.BABA181123C130000", "negative": "US.BABA181123P162500"}
+}

@@ -1,0 +1,9 @@
+{
+  "stockCode":"US.BABA",
+  "stockOwnerCode":"US.BABA181123C130000",
+  "volume":"100",
+  "allowedDrawbackPct":"2.1",
+  "beforeCloseTime":"180",
+  "incPct":"3.2",
+  "keepPositionPct":"20.5"
+}

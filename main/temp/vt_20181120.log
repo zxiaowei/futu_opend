@@ -1,0 +1,46 @@
+2018-11-20 09:05:17,526  INFO: Start connecting: host=127.0.0.1; port=22221;
+2018-11-20 09:05:17,532  INFO: Connected : conn_id=1; 
+2018-11-20 09:05:17,547  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 6706925150070680072, 'conn_key': '04AA18A1E3C913CB', 'keep_alive_interval': 10};
+2018-11-20 09:05:17,553  INFO: FUTU	行情接口连接成功
+2018-11-20 09:05:17,552  INFO: Start connecting: host=127.0.0.1; port=22221;
+2018-11-20 09:05:17,562  INFO: Connected : conn_id=2; 
+2018-11-20 09:05:17,566  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 10814210209256211975, 'conn_key': '09861EA1E3CB1345', 'keep_alive_interval': 10};
+2018-11-20 09:05:17,583  INFO: Start connecting: host=127.0.0.1; port=22221;
+2018-11-20 09:05:17,585  INFO: Connected : conn_id=3; 
+2018-11-20 09:05:17,588  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 1374667589311243905, 'conn_key': '88A623A1E3CD1389', 'keep_alive_interval': 10};
+2018-11-20 09:05:17,600  INFO: FUTU	交易接口解锁成功
+2018-11-20 09:05:17,601  INFO: FUTU	交易接口连接成功
+2018-11-20 09:05:19,712  INFO: FUTU	成交查询成功
+2018-11-20 09:05:19,788  INFO: FUTU	委托查询成功
+2018-11-20 09:06:31,924  INFO: STOPORDER_MAIN_WINDOW	成功添加策略[卖HK.28110+HK.00700]
+2018-11-20 09:14:16,253  INFO: FUTU	摆盘查询成功HK.28110
+2018-11-20 09:14:16,256  INFO: STOP_ORDER_ENGINE	请求HK.28110摆盘信息
+2018-11-20 09:14:16,259  INFO: STOP_ORDER_ENGINE	策略卖HK.28110+HK.00700发送委托成功，HK.28110，空，10000@0.05
+2018-11-20 16:36:56,687  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 16:36:56,703  INFO: Connected : conn_id=1; 
+2018-11-20 16:36:56,756  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 2988111176926434839, 'conn_key': '101613A248E877BE', 'keep_alive_interval': 10};
+2018-11-20 16:36:56,763  INFO: FUTU	行情接口连接成功
+2018-11-20 16:36:56,761  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 16:36:56,773  INFO: Connected : conn_id=2; 
+2018-11-20 16:36:56,779  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 16246710678929534676, 'conn_key': 'D8EE23A248EA77D6', 'keep_alive_interval': 10};
+2018-11-20 16:36:56,800  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 16:36:56,816  INFO: Connected : conn_id=3; 
+2018-11-20 16:36:56,822  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 5942476930529639412, 'conn_key': 'F53B2CA248EC7749', 'keep_alive_interval': 10};
+2018-11-20 16:36:57,223  INFO: FUTU	交易接口解锁成功
+2018-11-20 16:36:57,224  INFO: FUTU	交易接口连接成功
+2018-11-20 16:36:59,345  INFO: FUTU	成交查询成功
+2018-11-20 16:36:59,440  INFO: FUTU	委托查询成功
+2018-11-20 23:58:45,746  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 23:58:45,752  INFO: Connected : conn_id=1; 
+2018-11-20 23:58:45,759  INFO: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 4933712819574218848, 'conn_key': '66208362AB127866', 'keep_alive_interval': 10};
+2018-11-20 23:58:45,767  INFO: FUTU	行情接口连接成功
+2018-11-20 23:58:45,769  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 23:58:45,775  INFO: Connected : conn_id=2; 
+2018-11-20 23:58:45,779  INFO: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 7743961186076999944, 'conn_key': '09418862AB147830', 'keep_alive_interval': 10};
+2018-11-20 23:58:45,790  INFO: Start connecting: host=10.0.0.2; port=22221;
+2018-11-20 23:58:45,795  INFO: Connected : conn_id=3; 
+2018-11-20 23:58:45,799  INFO: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 3636680524938683155, 'conn_key': '18238D62AB1678A1', 'keep_alive_interval': 10};
+2018-11-20 23:58:45,812  INFO: FUTU	交易接口解锁成功
+2018-11-20 23:58:45,812  INFO: FUTU	交易接口连接成功
+2018-11-20 23:58:47,852  INFO: FUTU	成交查询成功
+2018-11-20 23:58:47,897  INFO: FUTU	委托查询成功

@@ -1,0 +1,18 @@
+2018-11-21 00:23:02,661 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 00:23:02,667 [open_context_base.py] on_connected:289: Connected : conn_id=1; 
+2018-11-21 00:23:02,671 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 17759971178705259378, 'conn_key': '710BE7CFB0187891', 'keep_alive_interval': 10};
+2018-11-21 00:23:02,680 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 00:23:02,686 [open_context_base.py] on_connected:289: Connected : conn_id=2; 
+2018-11-21 00:23:02,690 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 16246763902932332293, 'conn_key': '08AFEBCFB01A781F', 'keep_alive_interval': 10};
+2018-11-21 00:23:02,697 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 00:23:02,703 [open_context_base.py] on_connected:289: Connected : conn_id=3; 
+2018-11-21 00:23:02,707 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 12715943994097390992, 'conn_key': '96D5EFCFB01C7899', 'keep_alive_interval': 10};
+2018-11-21 23:53:00,107 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 23:53:00,125 [open_context_base.py] on_connected:289: Connected : conn_id=1; 
+2018-11-21 23:53:00,132 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 13364464793497052646, 'conn_key': 'E5259BF5EB1E789D', 'keep_alive_interval': 10};
+2018-11-21 23:53:00,135 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 23:53:00,147 [open_context_base.py] on_connected:289: Connected : conn_id=2; 
+2018-11-21 23:53:00,154 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=2; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 3204346233172821234, 'conn_key': 'F984A0F5EB20787E', 'keep_alive_interval': 10};
+2018-11-21 23:53:00,171 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
+2018-11-21 23:53:00,180 [open_context_base.py] on_connected:289: Connected : conn_id=3; 
+2018-11-21 23:53:00,187 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=3; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 11058626182330781843, 'conn_key': '9210A9F5EB2278E9', 'keep_alive_interval': 10};
