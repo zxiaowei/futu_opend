@@ -23,7 +23,7 @@ from vnpy.trader.gateway import futuGateway
 # 加载上层应用
 from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
 
-from app import slipperyGrid, stopOrder, optionSprites
+from app import slipperyGrid, stopOrder, optionSprites, optionSelector
 
 #----------------------------------------------------------------------
 def main():
@@ -41,17 +41,18 @@ def main():
     me.addGateway(futuGateway)
 
     # 添加上层应用
-    # me.addApp(riskManager)
+    #me.addApp(riskManager)
     # me.addApp(ctaStrategy)
     # me.addApp(spreadTrading)
     me.addApp(stopOrder)
-    me.addApp(slipperyGrid)
+    # me.addApp(slipperyGrid)
+    me.addApp(optionSelector)
     me.addApp(optionSprites)
     
     # 创建主窗口
     mw = MainWindow(me, ee)
     mw.showMaximized()
-    
+
     # 在主线程中启动Qt事件循环
     sys.exit(qApp.exec_())
 

@@ -1,7 +1,7 @@
 from futuquant import *
 SysConfig.set_client_info("MyFutuQuant", 0)
 SysConfig.set_all_thread_daemon(True)
-quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11112)
+quote_ctx = OpenQuoteContext(host='10.0.0.2', port=22221)
 
 #
 # print(quote_ctx.get_market_snapshot('HK.00700'))
@@ -12,7 +12,7 @@ df1 = quote_ctx.get_stock_basicinfo(Market.US, SecurityType.DRVT, 'US.AAPL190621
 # print(quote_ctx.get_history_kline('HK.00700', start='2017-06-20', end='2017-06-22'))
 # print(quote_ctx.get_autype_list(["HK.00700"]))
 #
-# print(quote_ctx.get_market_snapshot(['US.AAPL', 'HK.00700']))
+df1 = quote_ctx.get_market_snapshot(['US.AAPL', 'US.AAPL190621C140000','US.NFLX181130C295000'])
 # print(quote_ctx.get_plate_stock('HK.BK1001'))
 #
 # print(quote_ctx.get_plate_list(Market.HK, Plate.ALL))
