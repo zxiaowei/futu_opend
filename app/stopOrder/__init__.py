@@ -8,3 +8,4 @@ appDisplayName = u'回撤止损赢'
 appEngine = StopOrderEngine
 appWidget = StopOrderMainWindow
 appIco = 'stop.ico'
+needMainWindow = False

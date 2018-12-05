@@ -38,3 +38,16 @@ class VtOptionTickData(VtBaseData):
         self.type = EMPTY_STRING
         self.position = EMPTY_STRING
         self.costPrice = EMPTY_STRING
+
+class VtOptionSelectorData(VtBaseData):
+    def __init__(self):
+        self.code = EMPTY_STRING
+        self.last_price = EMPTY_STRING
+        self.option_type = EMPTY_STRING
+        self.strike_time = EMPTY_STRING
+        self.option_strike_price = EMPTY_STRING
+        self.option_open_interest = EMPTY_STRING
+        self.volume = EMPTY_STRING
+        self.option_delta = EMPTY_STRING
+        self.option_gamma = EMPTY_STRING
+        self.option_vega = EMPTY_STRING

@@ -250,9 +250,19 @@ class OptionSpritesMainWindow(QtWidgets.QWidget):
             traceback.print_exc()
 
     def receiveMarketDataFromMainWindow(self, tickData):
-        code = tickData.symbol
-        optionDetail = parseOptionCode(code)
-        if optionDetail:
-            self.lineOptionCode.setText(optionDetail["OptionCode"])
-        else:
-            pass
+        try:
+            code = tickData.symbol
+            optionDetail = parseOptionCode(code)
+            if optionDetail:
+                self.lineOptionCode.setText(optionDetail["OptionCode"])
+            else:
+                pass
+        except:
+            traceback.print_exc()
+
+    def receiveOptionSelectorDataFromMainWindow(self, optionSelectorData):
+        try:
+            code = optionSelectorData.code
+            self.lineOptionCode.setText(code)
+        except:
+            traceback.print_exc()

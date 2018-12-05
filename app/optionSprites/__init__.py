@@ -7,4 +7,5 @@ appName = 'OptionSprites'
 appDisplayName = u'期权精灵'
 appEngine = OptionSpritesEngine
 appWidget = OptionSpritesMainWindow
-appIco = 'option.ico'
+appIco = 'sprites.ico'
+needMainWindow = False

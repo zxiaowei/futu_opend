@@ -8,3 +8,4 @@ appDisplayName = u"期权选择器"
 appEngine = OptionSelectorEngine
 appWidget = OptionSelectorMainWindow
 appIco = 'selector.ico'
+needMainWindow = True

@@ -7,7 +7,8 @@ from vnpy.trader.vtObject import VtLogData, VtOptionChainReq, VtMarketSnapshotRe
 from vnpy.trader.vtFunction import getJsonPath
 from vnpy.trader.vtEvent import  EVENT_LOG
 from vnpy.event.eventEngine import Event
-
+from pandas import DataFrame
+from datetime import datetime, timedelta
 
 class OptionSelectorEngine(AppEngine):
 
@@ -58,19 +59,46 @@ class OptionSelectorEngine(AppEngine):
             traceback.print_exc()
 
 
-    def qryOptionList(self, stockCode, startDate, endDate):
+    def qryOptionList(self, stockCode, startDate, endDate, lowPrice, highPrice, optType):
         try:
-            optionReq = VtOptionChainReq()
-            optionReq.symbol= stockCode
-            optionReq.startDate = startDate
-            optionReq.endDate = endDate
-            gateway = 'FUTU'
 
-            retCode, df1 = self.mainEngine.getOptionChain(optionReq, gateway)
-            if retCode:
-                return
+            dfOptChain = DataFrame()
 
-            codeList = list(df1['code'])
+            # getOptionChain最多接收一个月的日期范围，startDate-endDate范围过大需要分段处理
+            dStart = datetime.strptime(startDate, "%Y-%m-%d")
+            dEnd = datetime.strptime(endDate, "%Y-%m-%d")
+            dParaStart = dStart
+            dParaEnd = dParaStart + timedelta(days=30)
+            dEnd30 = dEnd + timedelta(days=30)
+            while dParaEnd < dEnd30:
+                optionReq = VtOptionChainReq()
+                optionReq.symbol= stockCode
+                optionReq.startDate = dParaStart.strftime("%Y-%m-%d")
+                if dParaEnd < dEnd:
+                    optionReq.endDate = dParaEnd.strftime("%Y-%m-%d")
+                else:
+                    optionReq.endDate = dEnd.strftime("%Y-%m-%d")
+                gateway = 'FUTU'
+
+                retCode, df1 = self.mainEngine.getOptionChain(optionReq, gateway)
+                if retCode:
+                    return
+                else:
+                    dfOptChain = dfOptChain.append(df1)
+
+                dParaStart = dParaEnd + timedelta(days=1)
+                dParaEnd = dParaStart + timedelta(days=30)
+
+
+            # 排除掉不满足行权价的code， 减少输入getMarketSnapshot的code数量
+            if lowPrice != 0:
+                dfOptChain = dfOptChain[dfOptChain['strike_price'] >= lowPrice]
+            if highPrice != 0:
+                dfOptChain = dfOptChain[dfOptChain['strike_price'] <= highPrice]
+
+            dfOptChain = dfOptChain[dfOptChain['option_type'] == optType ]
+
+            codeList = list(dfOptChain['code'])
 
             snapshotReq = VtMarketSnapshotReq()
             snapshotReq.symbolList = codeList
@@ -88,4 +116,4 @@ class OptionSelectorEngine(AppEngine):
         if stockCode in self.optionDict:
             return self.optionDict[stockCode]
         else:
-            return None
+            return DataFrame()
