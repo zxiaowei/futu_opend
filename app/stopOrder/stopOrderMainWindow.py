@@ -254,6 +254,22 @@ class StopOrderMainWindow(QtWidgets.QWidget):
         except:
             traceback.print_exc()
 
+    def receiveOptionSelectorDataFromMainWindow(self, optionSelectorData):
+        try:
+            code = optionSelectorData.code
+            optionData = parseOptionCode(code)
+            if optionData:
+                code = optionData["OptionCode"]
+                ownerCode = optionData["OwnerCode"]
+            else:
+                code = code
+                ownerCode = ""
+            # 更新UI数据
+            self.lineStockCode.setText(code)
+            self.lineStockOwnerCode.setText(ownerCode)
+        except:
+            traceback.print_exc()
+
 class StrategyStopOrderMonitor(BasicMonitor):
     def __init__(self, stopOrderEngine, eventEngine, parent=None):
         try:

@@ -58,6 +58,20 @@ class OptionSelectorEngine(AppEngine):
         except:
             traceback.print_exc()
 
+    def qryMarketSnapshot(self, code):
+        try:
+            snapshotReq = VtMarketSnapshotReq()
+            snapshotReq.symbolList = code
+            gateway = 'FUTU'
+            retCode, df1 = self.mainEngine.getMarketSnapshot(snapshotReq, gateway)
+            if retCode:
+                return DataFrame()
+            else:
+                return df1
+
+        except:
+            traceback.print_exc()
+
 
     def qryOptionList(self, stockCode, startDate, endDate, lowPrice, highPrice, optType):
         try:

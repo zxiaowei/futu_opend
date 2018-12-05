@@ -10,6 +10,7 @@ from vnpy.trader.uiBasicWidget import BasicMonitor, BasicCell, FloatCell, NumCel
 from collections import OrderedDict
 from vnpy.trader.uiQt import BASIC_FONT
 from qssBasic import VtOptionSelectorData
+from datetime import datetime, timedelta
 
 import traceback
 
@@ -38,14 +39,19 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
     def initUi(self):
         try:
             self.setWindowTitle(u"期权选择器")
+            self.setMinimumWidth(1200)
+            self.setMinimumHeight(800)
 
             labelStockCode = QLabel(u"代码")
+            labelStockPrice = QLabel(u"价格(非实时)")
             lableStartDate = QLabel(u"开始日期")
             labelEndDate = QLabel(u"结束日期")
             labelType = QLabel(u"类型")
             labelStrikePrice = QLabel(u"行权价范围")
 
             self.lineStockCode = QLineEdit()
+            self.lineStockPrice = QLineEdit()
+            self.lineStockPrice.setEnabled(False)
             self.lineStartDate = QLineEdit()
             self.lineEndDate = QLineEdit()
             self.comboxType = QComboBox()
@@ -58,7 +64,9 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
             glayout = QGridLayout()
             glayout.addWidget(labelStockCode, 0, 0)
+            glayout.addWidget(labelStockPrice, 0 , 1)
             glayout.addWidget(self.lineStockCode, 1, 0)
+            glayout.addWidget(self.lineStockPrice, 1, 1)
             glayout.addWidget(lableStartDate, 2, 0)
             glayout.addWidget(labelEndDate, 2, 1)
             glayout.addWidget(labelType, 2,2)
@@ -71,28 +79,55 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
             glayout.addWidget(btQry, 4, 0)
             glayout.addWidget(btSort, 4, 1)
 
-            btQry.clicked.connect(self.qryOptionList)
-            btSort.clicked.connect(self.switchSort)
-
             vbox = QVBoxLayout()
-
             # 策略状态组件
-            self.optionSelectorMonitorWidget = OptionSelectorMonitor(self.optionSelectorEngine, self.eventEngine)
+            self.optionSelectorMonitorWidget = OptionSelectorMonitor(self.optionSelectorEngine, self.eventEngine, \
+                                                                     self.mainWindow)
             groupBoxStraMonitor = GroupBoxWithSinglWidget(self.optionSelectorMonitorWidget, u"期权信息")
 
             vbox.addLayout(glayout)
             vbox.addWidget(groupBoxStraMonitor)
             self.setLayout(vbox)
 
+            btQry.clicked.connect(self.qryOptionList)
+            btSort.clicked.connect(self.switchSort)
+            self.lineStockCode.returnPressed.connect(self.pressPriceReturn)
             self.optionSelectorMonitorWidget.itemDoubleClicked.connect(self.passOptionSelectorDataToMainWindow)
 
         except:
             traceback.print_exc()
 
+    def pressPriceReturn(self):
+        self.qryStockPrice()
+        self.updateDefaultOptionStrikePrice()
+
+    def qryStockPrice(self):
+        try:
+            code = self.lineStockCode.text()
+            df = self.optionSelectorEngine.qryMarketSnapshot(code)
+            if len(df) > 0:
+                price = df['last_price'][0]
+                self.lineStockPrice.setText(str(price))
+        except:
+            traceback.print_exc()
+
+    def updateDefaultOptionStrikePrice(self):
+        try:
+            # 默认区间是 0.9 - 1.1 倍股价
+            priceStr = self.lineStockPrice.text()
+            price = float(priceStr)
+            lowPrice = int(price * 0.9)
+            highPrice = int(price * 1.1)
+            self.lineLowStrikePrice.setText(str(lowPrice))
+            self.lineHighStrikePrice.setText(str(highPrice))
+        except:
+            pass
+
+
     def passOptionSelectorDataToMainWindow(self,cell):
         try:
             optionSelectorData = cell.data
-            self.mainWindow.accpetOptionData(optionSelectorData)
+            self.mainWindow.accpetOptionData(optionSelectorData, "OptionSprites")
         except:
             traceback.print_exc()
 
@@ -101,6 +136,10 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
     def qryOptionList(self):
         try:
+
+            # 先查询最新股票价格
+            self.qryStockPrice()
+
             stockCode = self.lineStockCode.text()
             startDate = self.lineStartDate.text()
             endDate = self.lineEndDate.text()
@@ -109,6 +148,7 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
             # 检查code，startDate， endDate, lowPrice, highPrice
             # Todo
+
             try:
                 optLowPrice = 0
                 optLowPrice = round(float(optLowPriceStr), 3)
@@ -164,18 +204,23 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
     def forUT(self):
         self.lineStockCode.setText("US.AAPL")
-        self.lineStartDate.setText("2018-12-03")
-        self.lineEndDate.setText("2019-01-15")
+        dtToday = datetime.today()
+        dtStr = dtToday.strftime("%Y-%m-%d")
+        dtEnd = dtToday + timedelta(days=45)
+        dtEndStr = dtEnd.strftime("%Y-%m-%d")
+        self.lineStartDate.setText(dtStr)
+        self.lineEndDate.setText(dtEndStr)
         self.lineLowStrikePrice.setText("160")
         self.lineHighStrikePrice.setText("190")
 
 
 class OptionSelectorMonitor(BasicMonitor):
-    def __init__(self, optionSelectorEngine, eventEngine, parent=None):
+    def __init__(self, optionSelectorEngine, eventEngine, mainWindow, parent=None):
         try:
             super(OptionSelectorMonitor, self).__init__(optionSelectorEngine, eventEngine, parent)
             self.optionSelectorEngine = optionSelectorEngine
             self.eventEngine = eventEngine
+            self.mainWindow = mainWindow
 
             d = OrderedDict()
             d["code"] = {'chinese': u"代码", 'cellType': BasicCell}
@@ -198,6 +243,9 @@ class OptionSelectorMonitor(BasicMonitor):
 
             self.initTable()
             self.connectSignal()
+
+            # 打开左边的垂直表头
+            self.verticalHeader().setVisible(True)
         except:
             traceback.print_exc()
 
@@ -210,3 +258,19 @@ class OptionSelectorMonitor(BasicMonitor):
     def switchSort(self):
         self.sorting = not self.sorting
         self.setSortingEnabled(self.sorting)
+
+    def passOptionSelectorDataToMainWindow(self):
+        try:
+            itemList = self.selectedItems()
+            optionSelectorData = itemList[0].data
+            self.mainWindow.accpetOptionData(optionSelectorData, "StopOrder")
+        except:
+            traceback.print_exc()
+
+    def initMenu(self):
+        """初始化右键菜单"""
+        self.menu = QtWidgets.QMenu(self)
+
+        stopOrderAction = QtWidgets.QAction(u"回撤止损赢", self)
+        stopOrderAction.triggered.connect(self.passOptionSelectorDataToMainWindow)
+        self.menu.addAction(stopOrderAction)
