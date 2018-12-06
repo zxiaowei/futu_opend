@@ -10,6 +10,7 @@ import sys
 reload(sys)
 # sys.setdefaultencoding('utf8')
 
+import traceback
 
 # vn.trader模块
 from vnpy.event import EventEngine
@@ -23,7 +24,7 @@ from vnpy.trader.gateway import futuGateway
 # 加载上层应用
 from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
 
-from app import slipperyGrid, stopOrder, optionSprites
+from app import slipperyGrid, stopOrder, optionSprites, optionSelector
 
 
 # ----------------------------------------------------------------------
@@ -46,7 +47,8 @@ def main():
     # me.addApp(ctaStrategy)
     # me.addApp(spreadTrading)
     me.addApp(stopOrder)
-    me.addApp(slipperyGrid)
+    # me.addApp(slipperyGrid)
+    me.addApp(optionSelector)
     me.addApp(optionSprites)
 
     # 创建主窗口
