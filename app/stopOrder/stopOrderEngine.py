@@ -25,7 +25,7 @@ class StopOrderEngine(AppEngine):
             self.mainEngine = mainEngine
             self.eventEngine = eventEngine
 
-            self.configFileName = 'stop_order_config_aapl.json'
+            self.configFileName = 'stop_order_config_00700.json'
             self.configFile = getJsonPath(self.configFileName, __file__)
             self.config = {}
 
@@ -123,6 +123,15 @@ class StopOrderEngine(AppEngine):
 
             straStatus.strategyID = stra.strategyID
             straStatus.status = stra.status
+            if stra.thresholdPriceEnabled:
+                straStatus.thresholdInfo = stra.startThresholdDirection + str(stra.realThresholdPrice)
+                # 用V X标识价格是否已经冲破 threshold
+                if stra.isThresholdPriceBroken:
+                    straStatus.thresholdInfo = "V" + straStatus.thresholdInfo
+                else:
+                    straStatus.thresholdInfo = "X" + straStatus.thresholdInfo
+            else:
+                straStatus.thresholdInfo = "无限制"
             straStatus.ownerPrice = stra.getOwnerPrice()
             straStatus.ownerMaxMinPrice = stra.getOwnerMaxMinPrice()
             straStatus.triggerPrice = stra.getTriggerPrice()

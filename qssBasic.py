@@ -13,6 +13,7 @@ class VtStrategyStopOrderStatus(VtBaseData):
 
         self.strategyID = EMPTY_STRING
         self.status = EMPTY_STRING
+        self.thresholdInfo = EMPTY_STRING
         self.ownerPrice = EMPTY_STRING
         self.ownerMaxMinPrice = EMPTY_STRING
         self.drawbackPrice = EMPTY_STRING

@@ -109,8 +109,9 @@ class OptionSelectorEngine(AppEngine):
                 dfOptChain = dfOptChain[dfOptChain['strike_price'] >= lowPrice]
             if highPrice != 0:
                 dfOptChain = dfOptChain[dfOptChain['strike_price'] <= highPrice]
-
-            dfOptChain = dfOptChain[dfOptChain['option_type'] == optType ]
+            # 过滤期权类型
+            if optType != "C&P":
+                dfOptChain = dfOptChain[dfOptChain['option_type'] == optType ]
 
             codeList = list(dfOptChain['code'])
 

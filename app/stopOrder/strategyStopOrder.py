@@ -3,7 +3,8 @@
 
 from vnpy.trader.app.ctaStrategy.ctaTemplate import CtaTemplate
 from vnpy.trader.language.chinese.constant import *
-from constant import TRADE_DIRECTION_SELL, TRADE_DIRECTION_BUY, CROSS_DIRECTION_DOWN,CROSS_DIRECTION_UP
+from constant import (TRADE_DIRECTION_SELL, TRADE_DIRECTION_BUY, CROSS_DIRECTION_DOWN,CROSS_DIRECTION_UP,
+                      STOP_ORDER_THRESHOLD_DIRECTION_GREATER, STOP_ORDER_THRESHOLD_DIRECTION_LESS)
 from commonFunction import *
 from copy import copy
 
@@ -75,7 +76,7 @@ class PriceTimeLine(object):
 class StopOrderStrategy(CtaTemplate):
     """"""
     className = 'StopOrderStrategy'
-    author = u'我叫止损'
+    author = u'我叫止损赢'
 
     def __init__(self, stopOrderEngine, setting):
         super(StopOrderStrategy,self).__init__(stopOrderEngine, setting)
@@ -100,13 +101,20 @@ class StopOrderStrategy(CtaTemplate):
             self.keepPositionPct = setting["keepPositionPct"] / 100
             self.crossDirection = setting["crossDirection"]  # 标的与正股涨跌的关系，正向 或 反向
             self.tradeDirection = setting["tradeDirection"]  # 交易方向
+            self.thresholdPrice = setting["thresholdPrice"]  # 策略启动的价格threshold
+            self.thresholdIsPct = setting["thresholdIsPct"]  # thresholdPrice 是不是百分比
+            self.thresholdPriceEnabled = setting["thresholdPriceEnabled"] # threshold price 是否开启
+            self.realThresholdPrice = None  # 如果传入的threshold为pct，转换成真实的threshold price价格
+            self.startThresholdDirection = setting["startThresholdDirection"]
+            self.isThresholdPriceBroken = False
 
             # 一个策略只能有一个symbol 用于下单。 这个不够灵活，需要改
             # 这是在sendorder时候默认使用的symblo
             self.vtSymbol = self.stockCode
 
             # 策略唯一标识
-            self.strategyID = self.tradeDirection + self.stockCode +"+" + self.stockOwnerCode
+            # self.strategyID = self.tradeDirection + self.stockCode +"+" + self.stockOwnerCode
+            self.strategyID = self.stockOwnerCode + self.crossDirection[2:4] + self.tradeDirection + self.stockCode
 
             orderBook1 = {'bid': [0 for i in range(10)], 'ask': [0 for i in range(10)]}
             orderBook2 = {'bid': [0 for i in range(10)], 'ask': [0 for i in range(10)]}
@@ -184,7 +192,7 @@ class StopOrderStrategy(CtaTemplate):
             if not pTimeLine.getFirstQuote :
                 pTimeLine.preClosePrice = tick.preClosePrice
                 pTimeLine.openPrice = tick.openPrice
-                # 根据正股昨收价计算相应的指标。x
+                # 根据正股昨收价计算相应的指标。
                 # 只有正股才会计算以下数据，后面code的罗辑要考虑到标的的tick先于正股到达的情况，不要产生一些正股数据没初始化问题
                 # 此策略所有流程都是根据正股股价做出判断，不会产生问题。
                 if symbol == self.stockOwnerCode:
@@ -193,6 +201,14 @@ class StopOrderStrategy(CtaTemplate):
                     self.incGap = pTimeLine.preClosePrice * self.incPct
                     self.incGap = round(self.incGap, 3)
                     self.marketCloseTime = getMarketCloseTimeBySymbol(symbol)
+
+                    # 处理thresholdPirce 价格
+                    if self.thresholdPriceEnabled:
+                        if self.thresholdIsPct:
+                            self.realThresholdPrice = pTimeLine.preClosePrice * (1 + self.thresholdPrice)
+                            self.realThresholdPrice = round(self.realThresholdPrice, 3)
+                        else:
+                            self.realThresholdPrice = self.thresholdPrice
 
                     # 如果是open tick，并且策略设定为需要考虑开盘就触发的情况
                     # todo 增加设置选项参数
@@ -206,11 +222,20 @@ class StopOrderStrategy(CtaTemplate):
                     # 收到第一份正股当天报价信息，进入运行状态
                     self.status = STRATEGY_STATUS_RUNNING
 
+            # 正股和标的都更新pTimeLine
             pTimeLine.appendPrice(tick)
 
-            # 判断正股新的报价是否超出了设定的正股的回撤范围
+
             gap = 0
             if symbol == self.stockOwnerCode:
+                # 如果启动了threshold 检查新价格是否突破了threshold，没突破则不需要后续处理
+                # 突破过一次即可，后续不在检查是否突破
+                if self.thresholdPriceEnabled and not self.isThresholdPriceBroken:
+                    self.isThresholdPriceBroken = self.doesTickBreakThresholdPrice(tick)
+                    if not self.isThresholdPriceBroken:
+                        return
+
+                # 判断正股新的报价是否超出了设定的正股的回撤范围
                 # 如果标的波动与正股是正向关系, 检查从高点下跌的幅度
                 if self.crossDirection == CROSS_DIRECTION_DOWN:
                     gap = pTimeLine.getGapHighest()
@@ -248,6 +273,22 @@ class StopOrderStrategy(CtaTemplate):
                     else:
                         self.status = STRATEGY_STATUS_ORDER_FAIL
         except:
+            traceback.print_exc()
+
+    def doesTickBreakThresholdPrice(self, tick):
+        try:
+            result = False
+            lastPrice = tick.lastPrice
+            if self.startThresholdDirection == STOP_ORDER_THRESHOLD_DIRECTION_GREATER:
+                if lastPrice > self.realThresholdPrice:
+                    result = True
+            elif self.startThresholdDirection == STOP_ORDER_THRESHOLD_DIRECTION_LESS:
+                if lastPrice < self.realThresholdPrice:
+                    result = True
+            return result
+
+        except:
+            return False
             traceback.print_exc()
 
     # 判断tick是否为开盘第一个报价
@@ -320,6 +361,7 @@ class StopOrderStrategy(CtaTemplate):
 
         try:
             # 极限情况下程序一启动就触发清仓，此时orderbook可能还没更新，需要主动查询摆盘
+            # ToDo 从摆盘缓存取报价，不需要缓存摆盘
             bid1 =  self.orderBookDict[symbol]["bid"][index-1]
             ask1 =  self.orderBookDict[symbol]["ask"][index-1]
             print(u"缓存摆盘bid1:%s  ask1:%s" %(bid1,ask1))

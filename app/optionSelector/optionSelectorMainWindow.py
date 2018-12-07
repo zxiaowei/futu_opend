@@ -16,7 +16,7 @@ import traceback
 
 class OptionSelectorMainWindow(QtWidgets.QWidget):
 
-    optionType = ["CALL", "PUT"]
+    optionType = ["CALL", "PUT","C&P"]
     optionPropertiesList = ['code', 'last_price', 'option_type','strike_time', 'option_strike_price',
                             'option_open_interest', 'volume', 'option_delta','option_gamma', 'option_vega']
 
@@ -224,6 +224,7 @@ class OptionSelectorMonitor(BasicMonitor):
 
             d = OrderedDict()
             d["code"] = {'chinese': u"代码", 'cellType': BasicCell}
+            d["option_type"] = {'chinese': u"类型", 'cellType': BasicCell}
             d["last_price"] = {'chinese': u"最新价格", 'cellType': FloatCell}
             d["strike_time"] = {'chinese': u"行权日", 'cellType': BasicCell}
             d["option_strike_price"] = {'chinese': u"行权价", 'cellType': FloatCell}

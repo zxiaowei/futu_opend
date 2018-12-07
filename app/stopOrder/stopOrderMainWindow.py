@@ -8,7 +8,8 @@ from vnpy.trader.vtObject import VtLogData
 from vnpy.trader.vtEvent import EVENT_LOG
 from vnpy.trader.language.chinese.constant import *
 from constant import (CROSS_DIRECTION_DOWN, CROSS_DIRECTION_UP, TRADE_DIRECTION_BUY, TRADE_DIRECTION_SELL,
-                        ORDER_PRICE_ORDERBOOK, ORDER_PRICE_AVG_ORDERBOOK )
+                        ORDER_PRICE_ORDERBOOK, ORDER_PRICE_AVG_ORDERBOOK,STOP_ORDER_THRESHOLD_DIRECTION_GREATER,
+                      STOP_ORDER_THRESHOLD_DIRECTION_LESS)
 
 from vnpy.trader.uiBasicWidget import BasicMonitor, BasicCell
 from collections import OrderedDict
@@ -16,6 +17,7 @@ from qssBasic import EVENT_STRATEGY_STOP_ORDER_STATUS
 from vnpy.trader.uiQt import BASIC_FONT
 from commonFunction import GroupBoxWithSinglWidget, parseOptionCode
 
+import re
 import sys
 import traceback
 
@@ -30,6 +32,9 @@ class StopOrderMainWindow(QtWidgets.QWidget):
 
     orderPriceStrategy = [ORDER_PRICE_ORDERBOOK,
                           ORDER_PRICE_AVG_ORDERBOOK]
+
+    thresholdDiection = [STOP_ORDER_THRESHOLD_DIRECTION_GREATER,
+                         STOP_ORDER_THRESHOLD_DIRECTION_LESS]
 
     def __init__(self, stopOrderEngine, eventEngine, parent=None):
         super(StopOrderMainWindow, self).__init__(parent)
@@ -67,6 +72,7 @@ class StopOrderMainWindow(QtWidgets.QWidget):
         labelStockOwnerCode = QLabel(u"正股代码")
         labelStockOwnerDrawdownPct = QLabel(u"正股最大回撤%")
         labelOrderPrice = QLabel(u"下单价格")
+        labelStartThreshold = QLabel(u"启动价格为")
         labelBeforeCloseTime = QLabel(u"收盘前(秒)")
         labelStockOwnerIncPct = QLabel(u"正股涨跌>%")
         labelKeepPositionPct = QLabel(u"保留仓位%")
@@ -82,6 +88,9 @@ class StopOrderMainWindow(QtWidgets.QWidget):
         self.lineStockOwnerDrawdownPct = QLineEdit()
         self.comboxLineOrderPrice = QComboBox()
         self.comboxLineOrderPrice.addItems(self.orderPriceStrategy)
+        self.comboxThresholdDirection = QComboBox()
+        self.comboxThresholdDirection.addItems(self.thresholdDiection)
+        self.lineThreadholdPirce = QLineEdit()
         self.lineBeforeCloseTime = QLineEdit()
         self.lineStockOwnerIncPct = QLineEdit()
         self.lineKeepPositionPct = QLineEdit()
@@ -125,6 +134,10 @@ class StopOrderMainWindow(QtWidgets.QWidget):
         glayout.addWidget(labelOrderPrice, 1, 2)
         glayout.addWidget(self.comboxLineOrderPrice, 1, 3)
         self.lineStockOwnerDrawdownPct.setMaximumWidth(gridMaxLen1)
+        glayout.addWidget(labelStartThreshold, 1, 4)
+        glayout.addWidget(self.comboxThresholdDirection, 1, 5)
+        glayout.addWidget(self.lineThreadholdPirce, 1, 6)
+        self.lineThreadholdPirce.setMaximumWidth(gridMaxLen1)
         # line 2
         glayout.addWidget(labelBeforeCloseTime, 2, 0)
         glayout.addWidget(self.lineBeforeCloseTime, 2, 1)
@@ -146,7 +159,7 @@ class StopOrderMainWindow(QtWidgets.QWidget):
         btStopAll = QPushButton(u"停止全部策略")
         btStopAll.setMinimumHeight(size.height() * 2)
         hbox2.addWidget(btStart)
-        hbox2.addWidget(btStopAll)
+        # hbox2.addWidget(btStopAll)
         hbox2.addStretch()
         hbox2.setSpacing(space)
         btStart.setFixedWidth(fixLenButton)
@@ -199,9 +212,35 @@ class StopOrderMainWindow(QtWidgets.QWidget):
             straConfig["incPct"] = float(straConfig["incPct"])
             straConfig["keepPositionPct"] = float(straConfig["keepPositionPct"])
 
+            # 判读是否指定了价格threshold
+            if straConfig["thresholdPrice"]:
+                # 判断是%(正负都可以) 还是直接价格
+                thresholdPrice = straConfig["thresholdPrice"]
+                matchObj = re.match(r'([-0-9]+)%$',thresholdPrice)
+                if matchObj:
+                    thresholdPricePct = matchObj.group(1)
+                    straConfig["thresholdPrice"] = round(float(thresholdPricePct)/100, 3)
+                    # 百分比要 大于 -100%
+                    if straConfig["thresholdPrice"] < -1:
+                        raise Exception("价格百分比要大于-100%")
+
+                    straConfig['thresholdIsPct'] = True
+                else:
+                    thresholdPrice = round(float(thresholdPrice), 3)
+                    # 价格要大于0
+                    if thresholdPrice <=0 :
+                        raise Exception("价格要大于0")
+
+                    straConfig["thresholdPrice"] = thresholdPrice
+                    straConfig['thresholdIsPct'] = False
+                straConfig['thresholdPriceEnabled'] = True
+            else:
+                straConfig['thresholdPriceEnabled'] = False
+
             return 0
         except:
             traceback.print_exc()
+            return -1
 
     def startStrategy(self):
         try:
@@ -218,6 +257,10 @@ class StopOrderMainWindow(QtWidgets.QWidget):
             straConfig["keepPositionPct"] = self.lineKeepPositionPct.text()
             straConfig["crossDirection"] = self.comboxCrossDirection.currentText()
             straConfig["tradeDirection"] = self.comboxTradeDirection.currentText()
+            straConfig["startThresholdDirection"] = self.comboxThresholdDirection.currentText()
+            straConfig["thresholdPrice"] = self.lineThreadholdPirce.text()
+            straConfig["thresholdPriceEnabled"] = False
+            straConfig["thresholdIsPct"] = False
 
             retCode = self.verifyAndConvertInputParam(straConfig)
             if retCode:
@@ -280,6 +323,7 @@ class StrategyStopOrderMonitor(BasicMonitor):
             d = OrderedDict()
             d["strategyID"] = {'chinese': u"策略标识", 'cellType': BasicCell}
             d["status"] = {'chinese': u"状态", 'cellType': BasicCell}
+            d["thresholdInfo"] = {'chinese': u"启动阈值", 'cellType': BasicCell}
             d["ownerPrice"] = {'chinese': u"正股价格", 'cellType': BasicCell}
             d["ownerMaxMinPrice"] = {'chinese': u"正股极值", 'cellType': BasicCell}
             d["triggerPrice"] = {'chinese': u"触发价格", 'cellType': BasicCell}

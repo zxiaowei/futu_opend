@@ -1,0 +1,12 @@
+{
+  "stockCode":"HK.19467",
+  "stockOwnerCode":"HK.00700",
+  "volume":"10000",
+  "allowedDrawbackPct":"1",
+  "beforeCloseTime":"-300",
+  "incPct":"3",
+  "keepPositionPct":"20",
+  "crossDirection": "低点上穿",
+  "tradeDirection": "卖",
+  "forceQryOrderBook": "Yes"
+}
