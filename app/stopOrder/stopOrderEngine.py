@@ -124,7 +124,16 @@ class StopOrderEngine(AppEngine):
             straStatus.strategyID = stra.strategyID
             straStatus.status = stra.status
             if stra.thresholdPriceEnabled:
-                straStatus.thresholdInfo = stra.startThresholdDirection + str(stra.realThresholdPrice)
+                # 已经获取了真实的threshold值，则显示真实数值
+                if stra.realThresholdPrice:
+                    straStatus.thresholdInfo = stra.startThresholdDirection + str(stra.realThresholdPrice)
+                # 否则用用户输入代替显示信息
+                else:
+                    suffix = ""
+                    if stra.thresholdIsPct:
+                        suffix = u"百分比"
+                    straStatus.thresholdInfo = stra.startThresholdDirection + suffix + str(stra.thresholdPrice)
+
                 # 用V X标识价格是否已经冲破 threshold
                 if stra.isThresholdPriceBroken:
                     straStatus.thresholdInfo = "V" + straStatus.thresholdInfo
@@ -212,6 +221,9 @@ class StopOrderEngine(AppEngine):
             stra.start()
             # 订阅行情
             self.subscribeForStrategy(stra)
+
+            # 第一次添加策略，通知UI更新
+            self.updateUI(stra)
 
             self.writeLog(u"成功添加策略[" + straID + u"]")
 

@@ -216,10 +216,10 @@ class StopOrderMainWindow(QtWidgets.QWidget):
             if straConfig["thresholdPrice"]:
                 # 判断是%(正负都可以) 还是直接价格
                 thresholdPrice = straConfig["thresholdPrice"]
-                matchObj = re.match(r'([-0-9]+)%$',thresholdPrice)
+                matchObj = re.match(r'([-0-9.]+)%$',thresholdPrice)
                 if matchObj:
                     thresholdPricePct = matchObj.group(1)
-                    straConfig["thresholdPrice"] = round(float(thresholdPricePct)/100, 3)
+                    straConfig["thresholdPrice"] = round(float(thresholdPricePct)/100, 4)
                     # 百分比要 大于 -100%
                     if straConfig["thresholdPrice"] < -1:
                         raise Exception("价格百分比要大于-100%")

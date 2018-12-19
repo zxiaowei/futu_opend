@@ -3,14 +3,17 @@
 import traceback
 from vnpy.trader.app import AppEngine
 import json
-from vnpy.trader.vtObject import VtLogData, VtOptionChainReq, VtMarketSnapshotReq
+from vnpy.trader.vtObject import VtLogData, VtOptionChainReq, VtMarketSnapshotReq, VtHisKlineReq, VtTradingDaysReq
 from vnpy.trader.vtFunction import getJsonPath
 from vnpy.trader.vtEvent import  EVENT_LOG
 from vnpy.event.eventEngine import Event
 from pandas import DataFrame
 from datetime import datetime, timedelta
+from commonFunction import getMarketBySymbol, getDatetimeOfSymbolTimezone
 
 class OptionSelectorEngine(AppEngine):
+
+    localKlineEnabled = False
 
     def __init__(self, mainEngine, eventEngine):
         try:
@@ -21,6 +24,7 @@ class OptionSelectorEngine(AppEngine):
             self.configFile = getJsonPath(self.configFileName, __file__)
 
             self.optionDict = {}
+
         except:
             traceback.print_exc()
 
@@ -72,6 +76,65 @@ class OptionSelectorEngine(AppEngine):
         except:
             traceback.print_exc()
 
+#
+    def calSTD(self, code, numOfDays=15):
+        try:
+            # 获取指定范围的日期
+            dtToday = getDatetimeOfSymbolTimezone(code)
+            dayEnd = dtToday - timedelta(days=1)
+            dayEndStr = dayEnd.strftime("%Y-%m-%d")
+            dayYearAgo = dtToday - timedelta(days=365)
+            tradingDaysReq = VtTradingDaysReq()
+            tradingDaysReq.market = getMarketBySymbol(code)
+            tradingDaysReq.startDate = dayYearAgo.strftime("%Y-%m-%d")
+            tradingDaysReq.endDate = dayEndStr
+            gatewayName = "FUTU"
+
+            days = self.mainEngine.getTradingDays(tradingDaysReq, gatewayName)
+            if len(days) > 0 :
+                startDateStr = days[-numOfDays - 1]
+            else:
+                return -1
+            # 查询numOfDays + 1 天之前的收盘价用于计算STD
+            ret, klineDF = self.getHisKline(code, startDateStr, dayEndStr, "K_DAY")
+            if ret == 0:
+                dfVolatility = klineDF['close'].pct_change()[1:]
+                stdValue = dfVolatility.std()
+            else:
+                stdValue = -1
+            return stdValue
+        except:
+            traceback.print_exc()
+            return -1
+
+#--------------------------------------------------------------------------------
+    def getHisKline(self, symbol, start, end, type):
+        try:
+            klineReq = VtHisKlineReq()
+            klineReq.symbol = symbol
+            klineReq.startDate = start
+            klineReq.endDate = end
+            klineReq.kType = type
+
+            gateway = 'FUTU'
+
+            ret = -1
+            df = ""
+
+            if self.localKlineEnabled:
+                # 先尝试获取本地Kline
+                ret, df = self.mainEngine.getHisKline(klineReq, gateway)
+            # 如果本地没有Kline 尝试在线获取Kline
+            if ret:
+                ret, df = self.mainEngine.requestHisKline(klineReq, gateway)
+                if ret:
+                    self.writeLog(u"获取Kline失败: %s" %symbol)
+
+            return ret, df
+        except:
+            traceback.print_exc()
+            return -1, ""
+#--------------------------------------------------------------------------------
 
     def qryOptionList(self, stockCode, startDate, endDate, lowPrice, highPrice, optType):
         try:
@@ -82,9 +145,10 @@ class OptionSelectorEngine(AppEngine):
             dStart = datetime.strptime(startDate, "%Y-%m-%d")
             dEnd = datetime.strptime(endDate, "%Y-%m-%d")
             dParaStart = dStart
+            # 每次最多查询30天的数据
             dParaEnd = dParaStart + timedelta(days=30)
             dEnd30 = dEnd + timedelta(days=30)
-            while dParaEnd < dEnd30:
+            while dParaEnd <= dEnd30:
                 optionReq = VtOptionChainReq()
                 optionReq.symbol= stockCode
                 optionReq.startDate = dParaStart.strftime("%Y-%m-%d")
@@ -103,6 +167,8 @@ class OptionSelectorEngine(AppEngine):
                 dParaStart = dParaEnd + timedelta(days=1)
                 dParaEnd = dParaStart + timedelta(days=30)
 
+            if len(dfOptChain) == 0:
+                return
 
             # 排除掉不满足行权价的code， 减少输入getMarketSnapshot的code数量
             if lowPrice != 0:

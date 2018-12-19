@@ -11,6 +11,8 @@ from collections import OrderedDict
 from vnpy.trader.uiQt import BASIC_FONT
 from qssBasic import VtOptionSelectorData
 from datetime import datetime, timedelta
+from vnpy.event.eventEngine import Event
+from vnpy.trader.vtEvent import EVENT_LOG
 
 import traceback
 
@@ -44,6 +46,9 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
             labelStockCode = QLabel(u"代码")
             labelStockPrice = QLabel(u"价格(非实时)")
+            labelSTDTimes = QLabel(u"标准差倍数")
+            labelSTDValue = QLabel(u"标准差")
+            labelSTDDays = QLabel(u"计算天数")
             lableStartDate = QLabel(u"开始日期")
             labelEndDate = QLabel(u"结束日期")
             labelType = QLabel(u"类型")
@@ -52,6 +57,10 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
             self.lineStockCode = QLineEdit()
             self.lineStockPrice = QLineEdit()
             self.lineStockPrice.setEnabled(False)
+            self.lineSTDTimes = QLineEdit()
+            self.lineSTDValue = QLineEdit()
+            self.lineSTDValue.setEnabled(False)
+            self.lineSTDDays = QLineEdit()
             self.lineStartDate = QLineEdit()
             self.lineEndDate = QLineEdit()
             self.comboxType = QComboBox()
@@ -65,17 +74,38 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
             glayout = QGridLayout()
             glayout.addWidget(labelStockCode, 0, 0)
             glayout.addWidget(labelStockPrice, 0 , 1)
+            glayout.addWidget(labelSTDTimes, 0 , 2)
+            glayout.addWidget(labelSTDValue, 0 ,3)
+            glayout.addWidget(labelSTDDays, 0 ,4)
+
+
             glayout.addWidget(self.lineStockCode, 1, 0)
             glayout.addWidget(self.lineStockPrice, 1, 1)
+            glayout.addWidget(self.lineSTDTimes, 1, 2)
+            glayout.addWidget(self.lineSTDValue, 1, 3)
+            glayout.addWidget(self.lineSTDDays, 1, 4)
+            self.lineStockCode.setMaximumWidth(150)
+            self.lineStockPrice.setMaximumWidth(150)
+            self.lineSTDTimes.setMaximumWidth(80)
+            self.lineSTDValue.setMaximumWidth(150)
+            self.lineSTDDays.setMaximumWidth(80)
+
             glayout.addWidget(lableStartDate, 2, 0)
             glayout.addWidget(labelEndDate, 2, 1)
             glayout.addWidget(labelType, 2,2)
             glayout.addWidget(labelStrikePrice, 2, 3)
+
             glayout.addWidget(self.lineStartDate, 3, 0)
             glayout.addWidget(self.lineEndDate, 3, 1)
             glayout.addWidget(self.comboxType, 3, 2)
             glayout.addWidget(self.lineLowStrikePrice, 3, 3)
             glayout.addWidget(self.lineHighStrikePrice, 3, 4)
+
+            self.lineStartDate.setMaximumWidth(150)
+            self.lineEndDate.setMaximumWidth(150)
+            self.lineLowStrikePrice.setMaximumWidth(150)
+            self.lineHighStrikePrice.setMaximumWidth(150)
+
             glayout.addWidget(btQry, 4, 0)
             glayout.addWidget(btSort, 4, 1)
 
@@ -99,15 +129,59 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
     def pressPriceReturn(self):
         self.qryStockPrice()
-        self.updateDefaultOptionStrikePrice()
+        # self.updateDefaultOptionStrikePrice()
+
+    def cleanPriceRetrun(self):
+        self.lineSTDValue.clear()
+        self.lineLowStrikePrice.clear()
+        self.lineHighStrikePrice.clear()
+        self.lineStockPrice.clear()
 
     def qryStockPrice(self):
         try:
+            self.cleanPriceRetrun()
+
             code = self.lineStockCode.text()
             df = self.optionSelectorEngine.qryMarketSnapshot(code)
+            # 设置当前价格
             if len(df) > 0:
                 price = df['last_price'][0]
                 self.lineStockPrice.setText(str(price))
+                # 记录昨收价
+                preClosePrice = df['prev_close_price'][0]
+            else:
+                # error
+                return
+
+            #  计算估计近日来的标准差
+            numOfDays = self.lineSTDDays.text()
+            try:
+                numOfDays = int(numOfDays)
+            except:
+                raise Exception(u"计算天数输入错误 %s" %numOfDays)
+
+            std = self.optionSelectorEngine.calSTD(code, numOfDays)
+            if std >= 0:
+                # 设置行权价范围
+                times = self.lineSTDTimes.text()
+                try:
+                    times = round(float(times),3)
+                except:
+                    self.writeLog(u"方差倍数设置不正确")
+                    return
+
+                lowPrice = (preClosePrice * (1 - std * times) )
+                highPrice = (preClosePrice * ( 1 + std * times) )
+                lowPrice = round(lowPrice, 3)
+                highPrice = round(highPrice, 3)
+                self.lineSTDValue.setText(str(round(std,4)))
+                self.lineLowStrikePrice.setText(str(lowPrice))
+                self.lineHighStrikePrice.setText(str(highPrice))
+            else:
+                # 无法计算波动范围
+                self.writeLog(u"无法计算标准差 %s %s" %(code, numOfDays))
+
+
         except:
             traceback.print_exc()
 
@@ -136,10 +210,8 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
     def qryOptionList(self):
         try:
-
             # 先查询最新股票价格
-            self.qryStockPrice()
-
+            # self.qryStockPrice()
             stockCode = self.lineStockCode.text()
             startDate = self.lineStartDate.text()
             endDate = self.lineEndDate.text()
@@ -148,7 +220,6 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
 
             # 检查code，startDate， endDate, lowPrice, highPrice
             # Todo
-
             try:
                 optLowPrice = 0
                 optLowPrice = round(float(optLowPriceStr), 3)
@@ -212,6 +283,19 @@ class OptionSelectorMainWindow(QtWidgets.QWidget):
         self.lineEndDate.setText(dtEndStr)
         self.lineLowStrikePrice.setText("160")
         self.lineHighStrikePrice.setText("190")
+        self.lineSTDTimes.setText("1.0")
+        self.lineSTDDays.setText("30")
+
+    def writeLog(self, content):
+        try:
+            log = VtLogData()
+            log.logContent = content
+            log.gatewayName = 'OPTION_SELECTOR_MAIN_WINDOW'
+            event = Event(type_=EVENT_LOG)
+            event.dict_['data'] = log
+            self.eventEngine.put(event)
+        except:
+            traceback.print_exc()
 
 
 class OptionSelectorMonitor(BasicMonitor):
@@ -275,3 +359,4 @@ class OptionSelectorMonitor(BasicMonitor):
         stopOrderAction = QtWidgets.QAction(u"回撤止损赢", self)
         stopOrderAction.triggered.connect(self.passOptionSelectorDataToMainWindow)
         self.menu.addAction(stopOrderAction)
+
