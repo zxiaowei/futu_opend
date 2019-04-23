@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="304aa40b-72ef-41f9-b0b4-2e6c02c927a7" name="Default" comment="add option selector, phase 3, right click to StopOrder">
+      <change beforePath="$PROJECT_DIR$/main/Futu_connect.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/Futu_connect.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/jiang/jiang_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/jiang/jiang_run.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="867239499">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="21" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.14" value="3" />
+          <entry key="project.open.time.15" value="2" />
+          <entry key="project.open.time.16" value="4" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="28" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="bak" value="1" />
+          <entry key="bat" value="1" />
+          <entry key="dat" value="3" />
+          <entry key="ico" value="20" />
+          <entry key="json" value="68" />
+          <entry key="log" value="9" />
+          <entry key="md" value="1" />
+          <entry key="py" value="482" />
+          <entry key="pyi" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="ANSI Aware" value="9" />
+          <entry key="Image" value="20" />
+          <entry key="JSON" value="68" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="482" />
+          <entry key="PythonStub" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="42" />
+          <entry key="json" value="938" />
+          <entry key="py" value="53291" />
+          <entry key="txt" value="75" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JSON" value="938" />
+          <entry key="PLAIN_TEXT" value="117" />
+          <entry key="Python" value="53291" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/stopOrder/stopOrderMainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6804">
+              <caret line="268" selection-start-line="268" selection-end-line="268" />
+              <folding>
+                <element signature="e#20#54#0" expanded="true" />
+                <marker date="1544022608093" expanded="true" signature="869:870" ph="..." />
+                <marker date="1544022608093" expanded="true" signature="1573:2363" ph="..." />
+                <marker date="1544022608093" expanded="true" signature="6740:6749" ph="..." />
+                <marker date="1544022608093" expanded="true" signature="10606:10607" ph="..." />
+                <marker date="1544022608093" expanded="true" signature="10606:10611" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/qinshanshui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1431">
+              <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiMainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2619">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+              <folding>
+                <element signature="e#19#32#0" expanded="true" />
+                <marker date="1544009985849" expanded="true" signature="4170:4442" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/optionSelector/optionSelectorMainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding>
+                <element signature="e#20#54#0" expanded="true" />
+                <marker date="1544024693575" expanded="true" signature="4025:4106" ph="..." />
+                <marker date="1544024693575" expanded="true" signature="4480:4854" ph="..." />
+                <marker date="1544024693575" expanded="true" signature="4904:5098" ph="..." />
+                <marker date="1544024693575" expanded="true" signature="5119:5179" ph="..." />
+                <marker date="1544024693575" expanded="true" signature="6219:7579" ph="..." />
+                <marker date="1544024693575" expanded="true" signature="8080:8081" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qssBasic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+              <folding>
+                <marker date="1543987687477" expanded="true" signature="1368:1373" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/optionSprites/optionSpritesMainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6804">
+              <caret line="262" selection-start-line="262" selection-end-line="267" selection-end-column="33" />
+              <folding>
+                <element signature="e#20#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/gateway/futuGateway/futuGateway.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13176">
+              <caret line="507" selection-start-line="507" selection-end-line="507" />
+              <folding>
+                <element signature="e#43#54#0" expanded="true" />
+                <marker date="1543939709739" expanded="true" signature="8352:8602" ph="..." />
+                <marker date="1543939709739" expanded="true" signature="17099:18494" ph="..." />
+                <marker date="1543939709739" expanded="true" signature="17629:18494" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commonFunction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1782">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiBasicWidget.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="229" column="41" lean-forward="true" selection-start-line="229" selection-start-column="41" selection-end-line="229" selection-end-column="41" />
+              <folding>
+                <element signature="e#19#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/Futu_connect.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/optionSelector/optionSelectorEngine.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1404">
+              <caret line="60" column="25" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="25" />
+              <folding>
+                <element signature="e#19#35#0" expanded="true" />
+                <marker date="1544005718993" expanded="true" signature="800:1064" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtEngine.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4077">
+              <caret line="170" column="50" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
+              <folding>
+                <marker date="1543977452105" expanded="true" signature="5456:5753" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>请求</find>
+      <find>send</find>
+      <find>mainWindow</find>
+      <find>position</find>
+      <find>detailDict</find>
+      <find>摆盘</find>
+      <find>getPositionDetail</find>
+      <find>getLatestOrderBook</find>
+      <find>stop</find>
+      <find>exit</find>
+      <find>qryac</find>
+      <find>close</find>
+      <find>closeEv</find>
+      <find>closeEvent</find>
+      <find>sort</find>
+      <find>sorting</find>
+      <find>PnlCell</find>
+      <find>getorderbook</find>
+      <find>VtLogData</find>
+      <find>getTrading</find>
+      <find>closeev</find>
+      <find>mainEngine</find>
+      <find>qry</find>
+      <find>order</find>
+      <find>ico</find>
+      <find>optionPropertiesList</find>
+      <find>OptionSelectorMonitor</find>
+      <find>initMenu</find>
+      <find>tradeDirection</find>
+      <find>passOptionSelectorDataToMainWindow</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/futuquant/examples/learn/stocksell.py" />
+        <option value="$PROJECT_DIR$/app/slipperyGrid/__init__.py" />
+        <option value="$PROJECT_DIR$/app/slipperyGrid/stock_relationship.json" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/futuquant/examples/vnpy/vnTrader/run.py" />
+        <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/stop_order_config.json" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/language/chinese/constant.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/ctaStrategy/ctaTemplate.py" />
+        <option value="$PROJECT_DIR$/time_zone.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/constant.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/gateway/futuGateway/Futu_connect.json" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/futuquant/examples/vnpy/vnTrader/jiang_Futu_connect.json" />
+        <option value="$PROJECT_DIR$/optionBSM/run_bsm.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/futuquant/examples/vnpy/vnTrader/Futu_connect.json" />
+        <option value="$PROJECT_DIR$/app/optionSprites.py" />
+        <option value="$PROJECT_DIR$/main/jiang/Futu_connect.json" />
+        <option value="$PROJECT_DIR$/app/optionSprites/option_sprites_config.json" />
+        <option value="$PROJECT_DIR$/app/optionSprites/optionBasic.py" />
+        <option value="$PROJECT_DIR$/app/slipperyGrid/strategyEngine.py" />
+        <option value="$PROJECT_DIR$/bak/app/stopOrder/strategyStopOrder.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/event/eventEngine.py" />
+        <option value="$PROJECT_DIR$/build2exe.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
+        <option value="$PROJECT_DIR$/commonFunction.py" />
+        <option value="$PROJECT_DIR$/test3.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/stop_order_config_aapl.json" />
+        <option value="$PROJECT_DIR$/app/optionSprites/optionSpritesEngine.py" />
+        <option value="$PROJECT_DIR$/constant.py" />
+        <option value="$PROJECT_DIR$/boll_test.py" />
+        <option value="$PROJECT_DIR$/app/slipperyGrid/slipperyGridMainWindow.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/strategyStopOrder.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/stopOrderEngine.py" />
+        <option value="$PROJECT_DIR$/test1.py" />
+        <option value="$PROJECT_DIR$/app/optionSelector/option_selector_config.json" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtObject.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/stop_order_config_baba.json" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/gateway/futuGateway/futuGateway.py" />
+        <option value="$PROJECT_DIR$/app/optionSelector/__init__.py" />
+        <option value="$PROJECT_DIR$/main/qinshanshui.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtEngine.py" />
+        <option value="$PROJECT_DIR$/app/optionSprites/__init__.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/__init__.py" />
+        <option value="$PROJECT_DIR$/app/optionSprites/optionSpritesMainWindow.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiBasicWidget.py" />
+        <option value="$PROJECT_DIR$/qssBasic.py" />
+        <option value="$PROJECT_DIR$/app/optionSelector/optionSelectorEngine.py" />
+        <option value="$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiMainWindow.py" />
+        <option value="$PROJECT_DIR$/app/stopOrder/stopOrderMainWindow.py" />
+        <option value="$PROJECT_DIR$/app/optionSelector/optionSelectorMainWindow.py" />
+        <option value="$PROJECT_DIR$/main/jiang/jiang_run.py" />
+        <option value="$PROJECT_DIR$/main/Futu_connect.json" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="233" />
+    <option name="y" value="42" />
+    <option name="width" value="1624" />
+    <option name="height" value="963" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="futu_opend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="futu_opend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="futu_opend" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="futu_opend" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="jiang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="futuquant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="futuquant" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="event" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="ctaStrategy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="futu_opend_v3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="riskManager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="futuquant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="futu_opend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (futu_opend_v3.6) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="vnpy" type="462c0819:PsiDirectoryNode" />
+              <item name="trader" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway" type="462c0819:PsiDirectoryNode" />
+              <item name="futuGateway" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../codebase" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\main\jiang" />
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\app\optionSprites" />
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\main" />
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\app\optionSelector" />
+      <recent name="C:\Users\IBM_ADMIN\venv\futu_opend_v3.6\Lib\site-packages\futuquant\examples\vnpy\vnTrader" />
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\app\stopOrder" />
+      <recent name="C:\Users\IBM_ADMIN\PycharmProjects\futu_opend\app" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.qinshanshui">
+    <configuration name="boll_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="futu_opend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boll_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qinshanshui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="futu_opend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/qinshanshui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="futu_opend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="futu_opend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="futu_opend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.qinshanshui" />
+      <item itemvalue="Python.test2" />
+      <item itemvalue="Python.test3" />
+      <item itemvalue="Python.boll_test" />
+      <item itemvalue="Python.test1" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.qinshanshui" />
+        <item itemvalue="Python.test1" />
+        <item itemvalue="Python.boll_test" />
+        <item itemvalue="Python.test3" />
+        <item itemvalue="Python.test2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="304aa40b-72ef-41f9-b0b4-2e6c02c927a7" name="Default" comment="" />
+      <created>1534351517871</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1534351517871</updated>
+    </task>
+    <task id="LOCAL-00001" summary="add option selector, phase 1">
+      <created>1543859139063</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1543859139063</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add option selector, phase 2">
+      <created>1543993592418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1543993592418</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add option selector, phase 3, right click to StopOrder">
+      <created>1544025043680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1544025043680</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="128" y="-4" width="1796" height="1088" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25028378" />
+      <window_info id="Structure" order="1" weight="0.2491487" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24726477" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34463894" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32932165" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add option selector, phase 1" />
+    <MESSAGE value="add option selector, phase 2" />
+    <MESSAGE value="add option selector, phase 3, right click to StopOrder" />
+    <option name="LAST_COMMIT_MESSAGE" value="add option selector, phase 3, right click to StopOrder" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sitePackages/vnpy/trader/vtEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2225">
+          <caret line="205" column="43" selection-start-line="205" selection-start-column="43" selection-end-line="205" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/language/chinese/constant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/149521707/PyQt5/QtWidgets/QTableWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="466" column="8" selection-start-line="466" selection-start-column="8" selection-end-line="466" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/third_party/3/six/__init__.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sitePackages/vnpy/examples/CryptoTrader/uiCryptoWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stopOrder/stop_order_config_baba.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSelector/option_selector_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSprites/optionSpritesEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stopOrder/stopOrderEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="120" column="39" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/149521707/PyQt5/QtWidgets/QTableWidgetItem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="4778" selection-start-line="4778" selection-end-line="4778" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/pandas/core/internals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="1436" selection-start-line="1436" selection-end-line="1436" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stopOrder/strategyStopOrder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+          <folding>
+            <element signature="e#20#83#0" expanded="true" />
+            <marker date="1543336349917" expanded="true" signature="9079:9106" ph="..." />
+            <marker date="1543336349917" expanded="true" signature="10087:10280" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtObject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <marker date="1543826909503" expanded="true" signature="1078:1133" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/ctaStrategy/cta.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/editor.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/connect.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/vnpy.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/test.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/restore.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/contract.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/ico/about.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/riskManager/uiRmWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="128" column="16" lean-forward="true" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/ctaStrategy/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/149521707/PyQt5/QtWidgets/QWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3942">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/ctaStrategy/uiCtaWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4077">
+          <caret line="156" column="37" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/app/ctaStrategy/ctaEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4860" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSprites/sprites.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSelector/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/jiang/selector.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/jiang/sprites.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/jiang/stop.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/jiang/Futu_connect.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSprites/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stopOrder/stopOrderMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6804">
+          <caret line="268" selection-start-line="268" selection-end-line="268" />
+          <folding>
+            <element signature="e#20#54#0" expanded="true" />
+            <marker date="1544022608093" expanded="true" signature="869:870" ph="..." />
+            <marker date="1544022608093" expanded="true" signature="1573:2363" ph="..." />
+            <marker date="1544022608093" expanded="true" signature="6740:6749" ph="..." />
+            <marker date="1544022608093" expanded="true" signature="10606:10607" ph="..." />
+            <marker date="1544022608093" expanded="true" signature="10606:10611" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2619">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+            <marker date="1544009985849" expanded="true" signature="4170:4442" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stopOrder/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="e#19#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qssBasic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+          <folding>
+            <marker date="1543987687477" expanded="true" signature="1368:1373" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSprites/optionSpritesMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6804">
+          <caret line="262" selection-start-line="262" selection-end-line="267" selection-end-column="33" />
+          <folding>
+            <element signature="e#20#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/gateway/futuGateway/futuGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13176">
+          <caret line="507" selection-start-line="507" selection-end-line="507" />
+          <folding>
+            <element signature="e#43#54#0" expanded="true" />
+            <marker date="1543939709739" expanded="true" signature="8352:8602" ph="..." />
+            <marker date="1543939709739" expanded="true" signature="17099:18494" ph="..." />
+            <marker date="1543939709739" expanded="true" signature="17629:18494" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commonFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSelector/optionSelectorEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="e#19#35#0" expanded="true" />
+            <marker date="1544005718993" expanded="true" signature="800:1064" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/vtEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4077">
+          <caret line="170" column="50" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
+          <folding>
+            <marker date="1543977452105" expanded="true" signature="5456:5753" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/optionSelector/optionSelectorMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding>
+            <element signature="e#20#54#0" expanded="true" />
+            <marker date="1544024693575" expanded="true" signature="4025:4106" ph="..." />
+            <marker date="1544024693575" expanded="true" signature="4480:4854" ph="..." />
+            <marker date="1544024693575" expanded="true" signature="4904:5098" ph="..." />
+            <marker date="1544024693575" expanded="true" signature="5119:5179" ph="..." />
+            <marker date="1544024693575" expanded="true" signature="6219:7579" ph="..." />
+            <marker date="1544024693575" expanded="true" signature="8080:8081" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/jiang/jiang_run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/qinshanshui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/149521707/PyQt5/QtWidgets/QAction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="288" column="8" selection-start-line="288" selection-start-column="8" selection-end-line="288" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/futu_opend_v3.6/Lib/site-packages/vnpy/trader/uiBasicWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="229" column="41" lean-forward="true" selection-start-line="229" selection-start-column="41" selection-end-line="229" selection-end-column="41" />
+          <folding>
+            <element signature="e#19#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/Futu_connect.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

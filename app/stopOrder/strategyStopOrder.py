@@ -20,11 +20,20 @@ class PriceTimeLine(object):
             self.latestPriceDatetime = []
 
             self.preClosePrice = EMPTY_FLOAT
-            self.openPrice = EMPTY_FLOAT
 
             self.getFirstQuote = False
+
+            self.waitingReset = False
         except:
             traceback.print_exc()
+
+    def reset(self):
+
+        self.highestPriceDatetime = []
+        self.lowestPriceDatetime = []
+
+
+
 
     def appendPrice(self,tick):
         try:
@@ -77,6 +86,8 @@ class StopOrderStrategy(CtaTemplate):
     """"""
     className = 'StopOrderStrategy'
     author = u'我叫止损赢'
+    TRADE_FORWARD = "F"
+    TRADE_BACKWARD = "B"
 
     def __init__(self, stopOrderEngine, setting):
         super(StopOrderStrategy,self).__init__(stopOrderEngine, setting)
@@ -101,12 +112,15 @@ class StopOrderStrategy(CtaTemplate):
             self.keepPositionPct = setting["keepPositionPct"] / 100
             self.crossDirection = setting["crossDirection"]  # 标的与正股涨跌的关系，正向 或 反向
             self.tradeDirection = setting["tradeDirection"]  # 交易方向
+            self.nextTradeDirection = None
+            self.setNextTradeDirection(self.TRADE_FORWARD)
             self.thresholdPrice = setting["thresholdPrice"]  # 策略启动的价格threshold
             self.thresholdIsPct = setting["thresholdIsPct"]  # thresholdPrice 是不是百分比
             self.thresholdPriceEnabled = setting["thresholdPriceEnabled"] # threshold price 是否开启
             self.realThresholdPrice = None  # 如果传入的threshold为pct，转换成真实的threshold price价格
             self.startThresholdDirection = setting["startThresholdDirection"]
-            self.isThresholdPriceBroken = False
+            self.isThresholdPriceBroken = False # 交易方向转换不需要重置，之前有交易必然会变成False
+            self.profitPct = 0.02   # 改成UI输入
 
             # 一个策略只能有一个symbol 用于下单。 这个不够灵活，需要改
             # 这是在sendorder时候默认使用的symblo
@@ -126,7 +140,10 @@ class StopOrderStrategy(CtaTemplate):
             # 收到第一个tick时根据pre_close计算
             self.drawbackGap = EMPTY_FLOAT
             self.incGap = EMPTY_FLOAT
-
+            # 方向变化时，根据之前挂单是正股价格计算
+            self.profitGap = EMPTY_STRING
+            self.orderPrice1 = None
+            self.orderPrice2 = None
             #
             self.marketCloseTime = EMPTY_STRING
 
@@ -136,6 +153,32 @@ class StopOrderStrategy(CtaTemplate):
             # 保存策略发出的order
             self.workingOrderList = []
             self.orderList = []
+        except:
+            traceback.print_exc()
+
+    def getNextTradeDirection(self):
+        return self.nextTradeDirection
+
+    def setNextTradeDirection(self, forwardDirection):
+        try:
+            if forwardDirection == self.TRADE_FORWARD:
+                if self.nextTradeDirection == None:
+                    if self.tradeDirection in [TRADE_DIRECTION_BUY, TRADE_DIRECTION_BUY_THEN_SELL]:
+                        self.nextTradeDirection = TRADE_DIRECTION_BUY
+                    elif self.tradeDirection in [TRADE_DIRECTION_SELL, TRADE_DIRECTION_SELL_THEN_BUY]:
+                        self.nextTradeDirection = TRADE_DIRECTION_SELL
+                    else:
+                        raise Exception(u"交易方向参数设置不正确")
+                elif self.nextTradeDirection == TRADE_DIRECTION_BUY and self.tradeDirection == TRADE_DIRECTION_BUY_THEN_SELL:
+                    self.nextTradeDirection = TRADE_DIRECTION_SELL
+                elif self.nextTradeDirection == TRADE_DIRECTION_SELL and self.tradeDirection == TRADE_DIRECTION_SELL_THEN_BUY:
+                    self.nextTradeDirection = TRADE_DIRECTION_BUY
+                # 其他情况没有后续的交易
+                else:
+                    self.nextTradeDirection = None
+            elif forwardDirection == self.TRADE_BACKWARD:
+                # 目前不处理后退的情况
+                pass
         except:
             traceback.print_exc()
 
@@ -155,6 +198,33 @@ class StopOrderStrategy(CtaTemplate):
             self.workingOrderList.remove(orderID)
         except:
             traceback.print_exc()
+
+    def orderFinished(self, orderID):
+        self.removeWorkingOrder(orderID)
+        self.changeStatusWhenOrderFinished()
+        self.setNextTradeDirection(self.TRADE_FORWARD)
+        self.resetForNextTrade()
+
+
+    def resetForNextTrade(self):
+
+        if self.nextTradeDirection != None :
+            # 根据新的Trade重置部分策略参数
+            self.quoteDict[self.self.stockOwnerCode].reset()
+
+    def orderCancelled(self, orderID):
+        self.removeWorkingOrder(orderID)
+        self.status = STRATEGY_STATUS_ORDER_CANCELLED
+
+    def changeStatusWhenOrderFinished(self):
+        # 当策略有订单成交并且，策略是先买后卖时，改变状态为等待卖出
+        if self.status == STRATEGY_STATUS_ORDER_WORKING and self.tradeDirection == TRADE_DIRECTION_BUY_THEN_SELL :
+            self.status = STRATEGY_STATUS_ALREADY_BUY_NEED_SELL
+        elif self.status == STRATEGY_STATUS_ORDER_WORKING and self.tradeDirection == TRADE_DIRECTION_SELL_THEN_BUY :
+            self.status = STRATEGY_STATUS_ALREADY_SELL_NEED_BUY
+        # 其他情况设置状态为完成
+        else:
+            self.status = STRATEGY_STATUS_COMPLETE
 
     # 返回策略需要订阅的symbol
     def getSymbolList(self):
@@ -183,6 +253,7 @@ class StopOrderStrategy(CtaTemplate):
         try:
             symbol = tick.symbol
             # 判断tick是否为当天数据， 不是的不处理
+            # ToDo 需要判断日期是否有变化，策略目前不能跨天运行
             if not self.isTodayTick(tick):
                 return
 
@@ -191,7 +262,7 @@ class StopOrderStrategy(CtaTemplate):
             # 第一个报价tick信息，初始化昨收,开盘价
             if not pTimeLine.getFirstQuote :
                 pTimeLine.preClosePrice = tick.preClosePrice
-                pTimeLine.openPrice = tick.openPrice
+
                 # 根据正股昨收价计算相应的指标。
                 # 只有正股才会计算以下数据，后面code的罗辑要考虑到标的的tick先于正股到达的情况，不要产生一些正股数据没初始化问题
                 # 此策略所有流程都是根据正股股价做出判断，不会产生问题。
@@ -255,8 +326,8 @@ class StopOrderStrategy(CtaTemplate):
                     # self.volume = self.sellVolumeBeforeClose
                     print(u"收盘前强制卖出")
 
-                # 如果gap大于设定的允许值or到达收盘前强制清仓时间，并且没有正在等待成交的订单，则触发清盘
-                # 清仓价格从标的的摆盘数据获得
+                # 如果gap大于设定的允许值or到达收盘前强制清仓时间，并且没有正在等待成交的订单，则触发交易
+                # 交易价格从标的的摆盘数据获得
                 orderId = ""
                 if (gap > self.drawbackGap or actionByForce) and self.status != STRATEGY_STATUS_ORDER_WORKING:
                     if self.tradeDirection == TRADE_DIRECTION_SELL:
@@ -310,7 +381,9 @@ class StopOrderStrategy(CtaTemplate):
     def statusAllowTickIn(self):
         if self.status == STRATEGY_STATUS_RUNNING \
             or self.status == STRATEGY_STATUS_ORDER_WORKING \
-            or self.status == STRATEGY_STATUS_WAITING_FOR_FIRST_QUOTE :
+            or self.status == STRATEGY_STATUS_WAITING_FOR_FIRST_QUOTE \
+            or self.status == STRATEGY_STATUS_ALREADY_SELL_NEED_BUY \
+            or self.status == STRATEGY_STATUS_ALREADY_BUY_NEED_SELL :
             return True
         else:
             return False
@@ -326,7 +399,9 @@ class StopOrderStrategy(CtaTemplate):
 
     def statusAllowCancellation(self):
         if self.status == STRATEGY_STATUS_RUNNING \
-            or self.status == STRATEGY_STATUS_WAITING_FOR_FIRST_QUOTE :
+            or self.status == STRATEGY_STATUS_WAITING_FOR_FIRST_QUOTE \
+            or self.status == STRATEGY_STATUS_ALREADY_SELL_NEED_BUY \
+            or self.status == STRATEGY_STATUS_ALREADY_BUY_NEED_SELL :
             return True
         else:
             return False

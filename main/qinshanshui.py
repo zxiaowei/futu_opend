@@ -19,11 +19,12 @@ from vnpy.trader.uiMainWindow import MainWindow
 
 # 加载底层接口
 from vnpy.trader.gateway import futuGateway
+from gateway import tradeDllAShareGateway
 
 # 加载上层应用
 from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
 
-from app import slipperyGrid, stopOrder, optionSprites, optionSelector
+from app import slipperyGrid, stopOrder, optionSprites, optionSelector, catchLimitUp
 
 #----------------------------------------------------------------------
 def main():
@@ -39,6 +40,7 @@ def main():
     
     # 添加交易接口
     me.addGateway(futuGateway)
+    me.addGateway(tradeDllAShareGateway)
 
     # 添加上层应用
     #me.addApp(riskManager)
@@ -48,6 +50,7 @@ def main():
     # me.addApp(slipperyGrid)
     me.addApp(optionSelector)
     me.addApp(optionSprites)
+    me.addApp(catchLimitUp)
     
     # 创建主窗口
     mw = MainWindow(me, ee)

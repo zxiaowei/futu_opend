@@ -6,6 +6,16 @@ from vnpy.trader.language.chinese.constant import *
 # UI event type
 EVENT_OPTION_TICK = "eOptionTick"
 EVENT_STRATEGY_STOP_ORDER_STATUS = "eStrategyStopOrderStatus"
+EVENT_STRATEGY_CATCH_LIMITUP_STATUS= "eStrategyCatchLimitUpStatus"
+
+class VtStrategyCatchLimitUpInfo(VtBaseData):
+    def __init__(self):
+        super(VtStrategyCatchLimitUpInfo, self).__init__()
+
+        self.plateName = None
+        self.numOfStocks = 0
+        self.catchedStocks = 0
+        self.missedStocks = 0
 
 class VtStrategyStopOrderStatus(VtBaseData):
     def __init__(self):

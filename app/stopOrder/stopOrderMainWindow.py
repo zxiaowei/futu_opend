@@ -7,8 +7,10 @@ from vnpy.event.eventEngine import Event
 from vnpy.trader.vtObject import VtLogData
 from vnpy.trader.vtEvent import EVENT_LOG
 from vnpy.trader.language.chinese.constant import *
-from constant import (CROSS_DIRECTION_DOWN, CROSS_DIRECTION_UP, TRADE_DIRECTION_BUY, TRADE_DIRECTION_SELL,
-                        ORDER_PRICE_ORDERBOOK, ORDER_PRICE_AVG_ORDERBOOK,STOP_ORDER_THRESHOLD_DIRECTION_GREATER,
+from constant import (CROSS_DIRECTION_DOWN, CROSS_DIRECTION_UP,
+                      TRADE_DIRECTION_BUY, TRADE_DIRECTION_SELL, TRADE_DIRECTION_BUY_THEN_SELL,
+                      TRADE_DIRECTION_BUY_THEN_STOP,
+                      ORDER_PRICE_ORDERBOOK, ORDER_PRICE_AVG_ORDERBOOK,STOP_ORDER_THRESHOLD_DIRECTION_GREATER,
                       STOP_ORDER_THRESHOLD_DIRECTION_LESS)
 
 from vnpy.trader.uiBasicWidget import BasicMonitor, BasicCell
@@ -25,7 +27,9 @@ import traceback
 class StopOrderMainWindow(QtWidgets.QWidget):
 
     tradeDirection = [TRADE_DIRECTION_SELL,
-                      TRADE_DIRECTION_BUY]
+                      TRADE_DIRECTION_BUY,
+                      TRADE_DIRECTION_BUY_THEN_STOP,
+                      TRADE_DIRECTION_BUY_THEN_SELL]
 
     crossDirection = [CROSS_DIRECTION_UP,
                        CROSS_DIRECTION_DOWN]

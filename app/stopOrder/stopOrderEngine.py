@@ -166,15 +166,11 @@ class StopOrderEngine(AppEngine):
                 stra = self.orderStrategyDict[orderID]
                 # 全部成交
                 if order.status == STATUS_ALLTRADED:
-                    # todo
-                    # 策略完成状态改变，不应该在此处，应该挪到策略里面
-                    # 此处应该只通知策略某个order已经全部成交了
-                    stra.removeWorkingOrder(orderID)
-                    stra.status = STRATEGY_STATUS_COMPLETE
+                    stra.orderFinished(orderID)
                 # 订单撤销
                 elif order.status == STATUS_CANCELLED:
-                    stra.removeWorkingOrder(orderID)
-                    stra.status = STRATEGY_STATUS_ORDER_CANCELLED
+                    stra.orderCancelled(orderID)
+
         except:
             traceback.print_exc()
 
