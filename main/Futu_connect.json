@@ -2,7 +2,7 @@
 	"host": "127.0.0.1",
 	"port": 22221,
 	"market": "US,HK,SZ,SH",
-    "password": "887886",
+    "password": "",
     "env": "REAL",
-	"id": "7646405"
+	"id": ""
 }
