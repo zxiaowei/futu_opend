@@ -8,13 +8,14 @@ from copy import copy
 import pandas as pd
 from vnpy.trader.vtFunction import getJsonPath
 import traceback
+import time
 
 CTAORDER_BUY = u'买开'
 CTAORDER_SELL = u'卖平'
 
 class LimitUpPriceTimeLine(object):
 
-    TRIGGER_CATCH_UP_THREAHOLD = 0.07
+    TRIGGER_CATCH_UP_THREAHOLD = -0.08
 
     def __init__(self, symbol):
         self.symbol = symbol
@@ -101,7 +102,7 @@ class LimitUpPriceTimeLine(object):
 
 class CatchLimitUpStrategy(CtaTemplate):
 
-    TOTAL_ALLOWED_CACHED_SYMBOL = 11
+    TOTAL_ALLOWED_CATCHED_SYMBOL = 11
     ALLOW_MISSED_IN_ONE_PLATE = 1
     ALLOW_CATCH_IN_ONE_PLATE = 1
     TOTAL_ALLOWED_VALUE = 100000
@@ -235,9 +236,9 @@ class CatchLimitUpStrategy(CtaTemplate):
                     return
 
                 #控制总抓取数量
-                if self.totalCachedCount >= self.TOTAL_ALLOWED_CACHED_SYMBOL:
+                if self.totalCachedCount >= self.TOTAL_ALLOWED_CATCHED_SYMBOL:
                     print("[%s]总共允许抓取[%s]支股票,已经抓满请求被拒绝。[%s]触发价格为[%s]" \
-                          % (timeStr, self.TOTAL_ALLOWED_CACHED_SYMBOL, symbol,\
+                          % (timeStr, self.TOTAL_ALLOWED_CATCHED_SYMBOL, symbol,\
                              priceTimeLine.lastPrice) )
                     return
 
@@ -253,7 +254,16 @@ class CatchLimitUpStrategy(CtaTemplate):
                 print("[%s]追涨下单第[%s]支[%s][%s]触发价[%s x %d]涨停价[%s].策略累计金额[%.2f]" \
                       % (timeStr, self.totalCachedCount, plateName, symbol, \
                          priceTimeLine.lastPrice, 100, priceTimeLine.limitUpPrice, self.totalCatchedValue))
-                orderId = self.ctaEngine.sendOrder(symbol[3:], CTAORDER_BUY, priceTimeLine.limitUpPrice, 100, self)
+                orderId = self.ctaEngine.sendOrder(symbol, CTAORDER_BUY, priceTimeLine.limitUpPrice, 100, self)
+                if orderId:
+                    pass
+                    # time.sleep(5)
+                    # rc = self.ctaEngine.cancelOrder(orderId, symbol, self)
+                    # if rc != 0:
+                    #     print("FFFFFFFFFFail")
+                else: # 下单失败
+                    print(u"下单失败")
+
 
         except:
             traceback.print_exc()

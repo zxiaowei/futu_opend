@@ -5,7 +5,7 @@ from vnpy.trader.app import AppEngine
 import json
 from vnpy.trader.vtFunction import getJsonPath
 from vnpy.trader.vtEvent import EVENT_LOG, EVENT_TICK, EVENT_ORDER, EVENT_TRADE
-from vnpy.trader.vtObject import VtLogData, VtSubscribeReq, VtOrderReq, VtOrderBookReq
+from vnpy.trader.vtObject import VtLogData, VtSubscribeReq, VtOrderReq, VtCancelOrderReq,VtHistoryTradeReq
 from vnpy.event.eventEngine import Event
 from pandas import DataFrame
 import pandas as pd
@@ -147,6 +147,52 @@ class CatchLimitUpEngine(AppEngine):
         pass
 
 
+    def queryTodayTradeSync(self):
+        try:
+            gatewayName = "TradeDllAShare"
+            tradeDf = self.mainEngine.qryTradeSync(gatewayName)
+            return tradeDf
+        except:
+            traceback.print_exc()
+            tradeDf = pd.DataFrame()
+            return tradeDf
+
+    def queryPositionSync(self):
+        try:
+            gatewayName = "TradeDllAShare"
+            positionDf = self.mainEngine.qryPositionSync(gatewayName)
+            return positionDf
+        except:
+            traceback.print_exc()
+            positionDf = pd.DataFrame()
+            return positionDf
+
+    def queryAccountSync(self):
+        try:
+            gatewayName = "TradeDllAShare"
+            accountDf = self.mainEngine.qryAccountSync(gatewayName)
+            return accountDf
+        except:
+            traceback.print_exc()
+            accountDf = pd.DataFrame()
+            return accountDf
+
+    def queryHistoryTradeSync(self, startDate,endDate):
+        try:
+            req = VtHistoryTradeReq()
+            req.startDate = startDate
+            req.endDate = endDate
+
+            gatewayName = "TradeDllAShare"
+            tradeDf = self.mainEngine.qryHistoryTradeSync( req, gatewayName)
+            return tradeDf
+        except:
+            traceback.print_exc()
+            tradeDf = pd.DataFrame()
+            return tradeDf
+
+
+
     def sendOrder(self, symbol, orderType, price, volume, strategy):
         try:
             req = VtOrderReq()
@@ -183,6 +229,30 @@ class CatchLimitUpEngine(AppEngine):
         except:
             traceback.print_exc()
             return VtOrderID
+
+    def cancelOrder(self,orderId, symbol, strategy):
+
+        try:
+            req = VtCancelOrderReq()
+            req.orderID = orderId
+            req.symbol = symbol
+
+            gatewayName = "TradeDllAShare"
+
+            rc = self.mainEngine.cancelOrder(req, gatewayName)
+
+            if rc == 0 :
+                self.writeLog(u'策略%s取消委托[%s %s]成功'
+                                 %(strategy.strategyID, orderId, symbol ))
+            else:
+                self.writeLog(u'策略%s取消委托[%s %s]失败'
+                                 %(strategy.strategyID, orderId, symbol))
+
+            return 0
+        except:
+            traceback.print_exc()
+            return -1
+
 
     def getOrderBook(self,symbol,strategy):
         pass

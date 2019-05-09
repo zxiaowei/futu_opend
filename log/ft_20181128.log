@@ -1,3 +1,0 @@
-2018-11-28 00:10:13,368 [open_context_base.py] _socket_reconnect_and_wait_ready:207: Start connecting: host=10.0.0.2; port=22221;
-2018-11-28 00:10:13,376 [open_context_base.py] on_connected:289: Connected : conn_id=1; 
-2018-11-28 00:10:13,384 [open_context_base.py] _handle_init_connect:378: InitConnect ok: conn_id=1; info={'server_version': 105, 'login_user_id': 7646405, 'conn_id': 11275161317165036978, 'conn_key': 'B1F5D8C67A6C79D9', 'keep_alive_interval': 10};

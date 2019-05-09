@@ -9,6 +9,8 @@ from vnpy.trader.vtGateway import *
 from vnpy.trader.vtFunction import getJsonPath
 from vnpy.trader.language.chinese.constant import *
 
+import pandas as pd
+
 import traceback
 
 directionMap = {}
@@ -63,6 +65,7 @@ class TradeDllAShareGateway(VtGateway):
         """连接"""
         if self.clientId != self.INVALID_CLIENT_ID:
             self.writeLog(u'已经连接TradeDllA股交易服务，请勿重复连接')
+            return
 
         # 载入配置
         try:
@@ -87,6 +90,9 @@ class TradeDllAShareGateway(VtGateway):
                 self.clientId = respJson["clientId"]
                 self.writeLog(u"AccountId[%s] ClientId[%s] 成功连接TradeDllA股交易服务"%(self.accountId, self.clientId))
             print(resp.text)
+
+            self.qryThread.start()
+
             return
         except:
             self.writeLog(u"连接TradeDllA股交易服务出错")
@@ -95,18 +101,16 @@ class TradeDllAShareGateway(VtGateway):
     # ----------------------------------------------------------------------
     def qryData(self):
         """初始化时查询数据"""
-        # 等待2秒保证行情和交易接口启动完成
-        sleep(2.0)
 
         # 查询合约、成交、委托、持仓、账户
-        # self.qryContract()
-        self.qryTrade()
-        self.qryOrder()
-        self.qryPosition()
-        self.qryAccount()
+        # self.qryTrade()
+        # self.qryOrder()
+        # self.qryPosition()
+        # self.qryAccount()
 
         # 启动循环查询
-        self.initQuery()
+        # self.initQuery()
+        pass
 
     # ----------------------------------------------------------------------
     def connectTrade(self):
@@ -118,7 +122,7 @@ class TradeDllAShareGateway(VtGateway):
     def sendOrder(self, orderReq):
         """发单"""
         try:
-            symbol = orderReq.symbol
+            symbol = orderReq.symbol[3:]
             volume = orderReq.volume
             price = orderReq.price
             tradeDirection = directionMap[orderReq.direction]
@@ -139,7 +143,7 @@ class TradeDllAShareGateway(VtGateway):
                 self.writeLog(u'委托失败：%s' % respJson["errMessage"])
                 vtOrderID = ""
         except:
-            self.writeLog(u"连接TradeDllA股交易服务出错")
+            self.writeLog(u"委托异常")
             vtOrderID = ""
 
         return vtOrderID
@@ -147,151 +151,235 @@ class TradeDllAShareGateway(VtGateway):
     # ----------------------------------------------------------------------
     def cancelOrder(self, cancelOrderReq):
         """撤单"""
-        return
+        try:
+            orderId = cancelOrderReq.orderID
+            realOrderId = orderId.split('.')[-1]
+            symbol = cancelOrderReq.symbol
+
+            url = self.ipPort + "/cancelorder"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId,  "orderId": realOrderId,
+                                                            "symbol":symbol})
+            respJson = json.loads(resp.text)
+            print(respJson)
+
+            rc = respJson["rc"]
+            if rc != 0:
+                self.writeError(rc, u'委托失败：%s' % respJson["errMessage"])
+                self.writeLog(u'委托失败：%s' % respJson["errMessage"])
+        except:
+            self.writeLog(u"撤单异常")
+
+        return rc
+
 
     # ----------------------------------------------------------------------
     def qryContract(self):
         """查询合约"""
-        self.writeLog(u'合约信息查询成功')
+        pass
+        # self.writeLog(u'合约信息查询成功')
+
+    # ----------------------------------------------------------------------
+    def qryAccountSync(self):
+        """查询账户资金"""
+        try:
+            accountDf = pd.DataFrame()
+            url = self.ipPort + "/account"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
+
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId})
+            respJson = json.loads(resp.text)
+
+            rc = respJson["rc"]
+            if rc == 0:
+                accountDf= pd.read_json(respJson["accountDf"])
+                self.writeLog(u'%s账户资金查询成功' % self.gatewayName)
+            else:
+                self.writeError(rc, u'账户资金查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'账户资金查询失败：%s' % respJson["errMessage"])
+            return accountDf
+        except:
+            traceback.print_exc()
+            return accountDf
 
     # ----------------------------------------------------------------------
     def qryAccount(self):
         """查询账户资金"""
-        code, data1 = self.tradeCtxHK.accinfo_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询账户资金失败：%s' % data1)
-            return
+        try:
+            url = self.ipPort + "/account"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
 
-        for ix, row in data1.iterrows():
-            account = VtAccountData()
-            account.gatewayName = self.gatewayName
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId})
+            respJson = json.loads(resp.text)
 
-            account.accountID = '%s_%s' % (self.gatewayName, 'HK')
-            account.vtAccountID = '.'.join([self.gatewayName, account.accountID])
-            account.balance = float(row['total_assets'])
-            account.available = float(row['avl_withdrawal_cash'])
+            rc = respJson["rc"]
+            if rc == 0:
+                accountDf = pd.read_json(respJson["accountDf"])
 
-            self.onAccount(account)
+                for ix, row in accountDf.iterrows():
+                    account = VtAccountData()
+                    account.gatewayName = self.gatewayName
+                    account.accountID = u"东北证券_" + self.accountId
+                    account.vtAccountID = '.'.join([self.gatewayName, account.accountID])
+                    account.balance = float(row['totalAsset'])
+                    account.available = float(row['avaMoney'])
 
-        code, data2 = self.tradeCtxUS.accinfo_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询账户资金失败：%s' % data2)
-            return
+                    self.onAccount(account)
+                self.writeLog(u'%s账户资金查询成功' % self.gatewayName)
+            else:
+                self.writeError(rc, u'账户资金查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'账户资金查询失败：%s' % respJson["errMessage"])
+        except:
+            traceback.print_exc()
 
-        for ix, row in data2.iterrows():
-            account = VtAccountData()
-            account.gatewayName = self.gatewayName
+    # ----------------------------------------------------------------------
+    def qryPositionSync(self):
+        """同步查询持仓"""
+        try:
+            df = pd.DataFrame()
+            url = self.ipPort + "/position"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
 
-            account.accountID = '%s_%s' % (self.gatewayName, 'US')
-            account.vtAccountID = '.'.join([self.gatewayName, account.accountID])
-            account.balance = float(row['total_assets'])
-            account.available = float(row['avl_withdrawal_cash'])
-
-            self.onAccount(account)
-
-        code, data3 = self.tradeCtxCN.accinfo_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询账户资金失败：%s' % data3)
-            return
-
-        for ix, row in data3.iterrows():
-            account = VtAccountData()
-            account.gatewayName = self.gatewayName
-
-            account.accountID = '%s_%s' % (self.gatewayName, 'CN')
-            account.vtAccountID = '.'.join([self.gatewayName, account.accountID])
-            account.balance = float(row['total_assets'])
-            account.available = float(row['avl_withdrawal_cash'])
-
-            self.onAccount(account)
-
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId})
+            df = pd.read_json(resp.text, dtype={"symbol": "str"})
+            self.writeLog(u'%s持仓查询成功' % self.gatewayName)
+            return df
+        except:
+            traceback.print_exc()
+            return df
     # ----------------------------------------------------------------------
     def qryPosition(self):
         """查询持仓"""
-        code, data1 = self.tradeCtxHK.position_list_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询持仓失败：%s' % data1)
-            return
+        try:
+            url = self.ipPort + "/position"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
 
-        code, data2 = self.tradeCtxUS.position_list_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询持仓失败：%s' % data2)
-            return
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId})
+            df = pd.read_json(resp.text, dtype={"symbol": "str"})
+            print(df)
 
-        code, data3 = self.tradeCtxCN.position_list_query(trd_env=self.env, acc_id=0)
-        if code:
-            self.writeError(code, u'查询持仓失败：%s' % data3)
-            return
+            for ix, row in df.iterrows():
+                pos = VtPositionData()
+                pos.gatewayName = self.gatewayName
 
-        data = data1.append(data2)
-        data = data.append(data3)
-        for ix, row in data.iterrows():
-            pos = VtPositionData()
-            pos.gatewayName = self.gatewayName
+                pos.symbol = self.getFullSymbolName(row['symbol'])
+                pos.vtSymbol = pos.symbol
 
-            pos.symbol = row['code']
-            pos.vtSymbol = pos.symbol
+                pos.direction = DIRECTION_LONG
+                pos.vtPositionName = '.'.join([pos.vtSymbol, pos.direction])
 
-            pos.direction = DIRECTION_LONG
-            pos.vtPositionName = '.'.join([pos.vtSymbol, pos.direction])
+                pos.position = int(row['totalVol'])
+                pos.price = float(row['currentPrice'])
+                pos.positionProfit = float(row['profit'])
+                pos.frozen = int(row['totalVol']) - int(row['canSellVol'])
 
-            pos.position = float(row['qty'])
-            pos.price = float(row['cost_price'])
-            pos.positionProfit = float(row['pl_val'])
-            pos.frozen = float(row['qty']) - float(row['can_sell_qty'])
+                if pos.price < 0: pos.price = 0
+                if pos.positionProfit > 100000000: pos.positionProfit = 0
 
-            if pos.price < 0: pos.price = 0
-            if pos.positionProfit > 100000000: pos.positionProfit = 0
+                self.onPosition(pos)
 
-            self.onPosition(pos)
+            self.writeLog(u'%s持仓查询成功' % self.gatewayName)
+        except:
+            traceback.print_exc()
 
+    # add prefix SH. SZ. for symbol
+    def getFullSymbolName(self,symbol):
+        if symbol[0] == '6':
+            return "SH."+symbol
+        else:
+            return "SZ."+symbol
     # ----------------------------------------------------------------------
     def qryOrder(self):
         """查询委托"""
-        code, data1 = self.tradeCtxHK.order_list_query("", trd_env=self.env)
-        if code:
-            self.writeError(code, u'查询委托失败：%s' % data1)
-            return
+        try:
+            url = self.ipPort + "/queryOrder"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
 
-        code, data2 = self.tradeCtxUS.order_list_query("", trd_env=self.env)
-        if code:
-            self.writeError(code, u'查询委托失败：%s' % data2)
-            return
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId})
+            respJson = json.loads(resp.text)
 
-        code, data3 = self.tradeCtxCN.order_list_query("", trd_env=self.env)
-        if code:
-            self.writeError(code, u'查询委托失败：%s' % data3)
-            return
-
-        data = data1.append(data2)
-        data = data.append(data3)
-        self.processOrder(data)
-        self.writeLog(u'委托查询成功')
+            rc = respJson["rc"]
+            if rc == 0:
+                orderDf= pd.read_json(respJson["orderDf"],dtype={"symbol": "str", "orderId":"str"})
+                self.processOrder(orderDf)
+                self.writeLog(u'%s当日下单查询成功' % self.gatewayName)
+            else:
+                self.writeError(rc, u'当日下单查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'当日下单查询失败：%s' % respJson["errMessage"])
+        except:
+            traceback.print_exc()
 
     # ----------------------------------------------------------------------
+    def qryTradeSync(self):
+        """同步查询成交"""
+        try:
+            url = self.ipPort + "/queryTrade"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
+
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId, "ignoreApply":True})
+            respJson = json.loads(resp.text)
+
+            rc = respJson["rc"]
+            if rc == 0:
+                tradeDf= pd.read_json(respJson["tradeDf"],dtype={"symbol": "str", "tradeId":"str", "orderId":"str"})
+                self.writeLog(u'%s当日成交查询成功' % self.gatewayName)
+                return tradeDf
+            else:
+                self.writeError(rc, u'当日成交查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'当日成交查询失败：%s' % respJson["errMessage"])
+                return pd.DataFrame()
+        except:
+            traceback.print_exc()
+            return pd.DataFrame()
+
     def qryTrade(self):
         """查询成交"""
-        code, data1 = self.tradeCtxHK.deal_list_query(self.env)
-        if code:
-            self.writeError(code, u'查询成交失败：%s' % data1)
-            return
+        try:
+            url = self.ipPort + "/queryTrade"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
 
-        code, data2 = self.tradeCtxUS.deal_list_query(self.env)
-        if code:
-            self.writeError(code, u'查询成交失败：%s' % data2)
-            return
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId, "ignoreApply":True})
+            respJson = json.loads(resp.text)
 
-        code, data3 = self.tradeCtxCN.deal_list_query(self.env)
-        if code:
-            self.writeError(code, u'查询成交失败：%s' % data3)
-            return
-
-        data = data1.append(data2)
-        data = data.append(data3)
-        self.processDeal(data)
-        self.writeLog(u'成交查询成功')
+            rc = respJson["rc"]
+            if rc == 0:
+                tradeDf= pd.read_json(respJson["tradeDf"],dtype={"symbol": "str", "tradeId":"str", "orderId":"str"})
+                self.processDeal(tradeDf)
+                self.writeLog(u'%s当日成交查询成功' % self.gatewayName)
+            else:
+                self.writeError(rc, u'当日成交查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'当日成交查询失败：%s' % respJson["errMessage"])
+        except:
+            traceback.print_exc()
 
     # ----------------------------------------------------------------------
+    def qryHistoryTradeSync(self,req):
+        """查询历史成交"""
+        try:
+            tradeDf = pd.DataFrame()
+
+            startDate = req.startDate
+            endDate = req.endDate
+            ignoreApply = req.ignoreApply
+
+            url = self.ipPort + "/queryHistoryTrade"
+            header = {"accept": "application/json", "Content-Type": "application/json"}
+
+            resp = requests.post(url, headers=header, json={"accountId": self.accountId, "startDate":startDate,
+                                                            "endDate":endDate, "ignoreApply":ignoreApply})
+            respJson = json.loads(resp.text)
+
+            rc = respJson["rc"]
+            if rc == 0:
+                tradeDf = pd.read_json(respJson["historyTradeDf"], dtype={"symbol": "str", "tradeId": "str", "orderId": "str"})
+                self.writeLog(u'%s历史成交查询成功' % self.gatewayName)
+            else:
+                self.writeError(rc, u'历史成交查询失败：%s' % respJson["errMessage"])
+                self.writeLog(u'历史成交查询失败：%s' % respJson["errMessage"])
+            return tradeDf
+        except:
+            traceback.print_exc()
+            return tradeDf
 
     # ----------------------------------------------------------------------
     def close(self):
@@ -332,26 +420,26 @@ class TradeDllAShareGateway(VtGateway):
         """处理委托推送"""
         for ix, row in data.iterrows():
             # 如果状态是已经删除，则直接忽略
-            if row['order_status'] == OrderStatus.DELETED:
+            if row['orderType'] in [u"撤单"]:
                 continue
+            # print(row['order_status'])
 
-            print(row['order_status'])
             order = VtOrderData()
             order.gatewayName = self.gatewayName
 
-            order.symbol = row['code']
+            order.symbol = row['symbol']
             order.vtSymbol = order.symbol
 
-            order.orderID = str(row['order_id'])
+            order.orderID = str(row['orderId'])
             order.vtOrderID = '.'.join([self.gatewayName, order.orderID])
 
-            order.price = float(row['price'])
-            order.totalVolume = float(row['qty'])
-            order.tradedVolume = float(row['dealt_qty'])
-            order.orderTime = row['create_time'].split(' ')[-1]
+            order.price = float(row['orderPrice'])
+            order.totalVolume = float(row['orderVolume'])
+            order.tradedVolume = float(row['tradeVolume'])
+            order.orderTime = row['time']
 
-            order.status = statusMapReverse.get(row['order_status'], STATUS_UNKNOWN)
-            order.direction = directionMapReverse[row['trd_side']]
+            order.status = row['orderState']
+            order.direction = row["flagName"]
 
             self.onOrder(order)
 
@@ -360,7 +448,7 @@ class TradeDllAShareGateway(VtGateway):
     def processDeal(self, data):
         """处理成交推送"""
         for ix, row in data.iterrows():
-            tradeID = str(row['deal_id'])
+            tradeID = str(row['tradeId'])
             if tradeID in self.tradeSet:
                 continue
             self.tradeSet.add(tradeID)
@@ -368,20 +456,20 @@ class TradeDllAShareGateway(VtGateway):
             trade = VtTradeData()
             trade.gatewayName = self.gatewayName
 
-            trade.symbol = row['code']
+            trade.symbol = row['symbol']
             trade.vtSymbol = trade.symbol
 
             trade.tradeID = tradeID
             trade.vtTradeID = '.'.join([self.gatewayName, trade.tradeID])
 
-            trade.orderID = row['order_id']
+            trade.orderID = row['orderId']
             trade.vtOrderID = '.'.join([self.gatewayName, trade.orderID])
 
-            trade.price = float(row['price'])
-            trade.volume = float(row['qty'])
-            trade.direction = directionMapReverse[row['trd_side']]
+            trade.price = float(row['tradePrice'])
+            trade.volume = float(row['tradeVolume'])
+            trade.direction = row['flagName']
 
-            trade.tradeTime = row['create_time'].split(' ')[-1]
+            trade.tradeTime = row['time']
 
             self.onTrade(trade)
 

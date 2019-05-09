@@ -73,9 +73,26 @@ class CatchLimitUpMainWindow(QtWidgets.QWidget):
         groupBoxStraMonitor = GroupBoxWithSinglWidget(self.strategyWidget, u"板块信息")
         vbox.addWidget(groupBoxStraMonitor)
 
-        self.setLayout(vbox)
+        hbox3 = QHBoxLayout()
+        btAnalysis = QPushButton(u"复盘")
+        hbox3.addLayout(vbox)
+        hbox3.addWidget(btAnalysis)
+
+        self.setLayout(hbox3)
 
         btStart.clicked.connect(self.startStrategy)
+        btAnalysis.clicked.connect(self.analyze)
+
+    def analyze(self):
+
+        # 根据当前持仓，当天成交， 历史成交 向前推算历史持仓
+
+        # accountDf = self.catchLimitUpEngine.queryAccountSync()
+        positionDf = self.catchLimitUpEngine.queryPositionSync()
+        # todayTradeDf = self.catchLimitUpEngine.queryTodayTradeSync()
+        histTradeDf = self.catchLimitUpEngine.queryHistoryTradeSync("20181023","20190430")
+
+        pass
 
     def registerEvent(self):
         # 暂不需要独立的log处理， log会显示在主窗口的“日志”窗口中
